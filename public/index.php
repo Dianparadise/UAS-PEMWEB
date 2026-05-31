@@ -1,17 +1,18 @@
+
 <?php
 session_start();
-require_once '../config/koneksi.php';
-$queryTerbaru = mysqli_query($conn, "
-    SELECT 
-        alumni_profiles.*,
-        users.nama
-    FROM alumni_profiles
-    JOIN users 
-        ON alumni_profiles.user_id = users.id
-    ORDER BY alumni_profiles.created_at DESC
-    LIMIT 6
 
-");
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+require_once '../config/koneksi.php';
+require_once '../app/controller/HomeController.php';
+
+$controller = new HomeController();
+
+$queryTerbaru = $controller->index();
 
 
 ?>

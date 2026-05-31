@@ -342,3 +342,481 @@ body {
         /* 1 kolom penuh untuk HP */
     }
 }
+
+/* =========================================
+   HALAMAN LOGIN
+========================================= */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e8eaf6;
+    /* Latar belakang agak abu-abu kebiruan */
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    /* Lebar maksimal kotak login */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    color: #1a237e;
+    /* Warna biru khas IPB Pedia kamu */
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.login-form .input-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-size: 0.95rem;
+}
+
+.login-form input:focus {
+    border-color: #1a237e;
+    /* Efek garis biru saat kolom diklik */
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-login:hover {
+    background-color: #121858;
+    /* Warna tombol jadi lebih gelap saat di-hover */
+}
+
+.login-footer {
+    text-align: center;
+    font-size: 0.85
+}
+
+/* =========================================
+   HALAMAN PROFIL
+========================================= */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.profile-card {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header-bg {
+    height: 120px;
+    background: linear-gradient(135deg, #1a237e, #3949ab);
+}
+
+.profile-avatar {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+}
+
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a237e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+    padding: 20px 30px 30px;
+    text-align: center;
+}
+
+.profile-info h2 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.role-badge {
+    display: inline-block;
+    background-color: #e8eaf6;
+    color: #1a237e;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.profile-details {
+    text-align: left;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: #666;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.detail-value {
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit,
+.btn-password {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    background-color: #1a237e;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #121858;
+}
+
+.btn-password {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-password:hover {
+    background-color: #e2e2e2;
+}
+
+/* =========================================
+   LAYOUT DASHBOARD PROFIL BARU
+========================================= */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    /* Kiri untuk menu, kanan untuk konten */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* SIDEBAR KIRI */
+.profile-sidebar {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+.user-avatar-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.avatar-big {
+    width: 80px;
+    height: 80px;
+    background-color: #1a237e;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.user-avatar-section h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.badge-role {
+    font-size: 0.75rem;
+    font-weight: bold;
+    background-color: #e8eaf6;
+    color: #1a237e;
+    padding: 3px 12px;
+    border-radius: 15px;
+}
+
+/* MENU LINK SIDEBAR */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 15px;
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #e8eaf6;
+    color: #1a237e;
+}
+
+.logout-link {
+    margin-top: 20px;
+    color: #e74c3c;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    border-radius: 0;
+}
+
+.logout-link:hover {
+    background-color: #fdedec;
+    color: #e74c3c;
+}
+
+/* KONTEN UTAMA SEBELAH KANAN */
+.content-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.section-header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.section-header-box h2 {
+    color: #1a237e;
+    font-size: 1.3rem;
+}
+
+.btn-primary-action {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* GRID DETAIL BIODATA */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #777;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-group p {
+    font-size: 1rem;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border-left: 3px solid #1a237e;
+    font-weight: 500;
+}
+
+/* TABEL STATUS PENGAJUAN */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.status-table th,
+.status-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.status-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: bold;
+}
+
+.empty-table-text {
+    text-align: center;
+    color: #aaa;
+    padding: 20px 0 !important;
+}
+
+/* BADGE STATUS */
+.status-badge {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.status-badge.approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* FORM UBAH PASSWORD */
+.password-form {
+    max-width: 400px;
+}
+
+.password-form .form-group {
+    margin-bottom: 15px;
+}
+
+.password-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.password-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.password-form input:focus {
+    border-color: #1a237e;
+}
+
+.btn-save-password {
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVE DASHBOARD */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

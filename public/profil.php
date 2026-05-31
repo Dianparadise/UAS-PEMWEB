@@ -1,0 +1,211 @@
+<?php
+session_start();
+// Gembok Keamanan
+if (!isset($_SESSION['status']) || $_SESSION['status'] != 'login') {
+    header("location: login.php");
+    exit;
+}
+
+require_once '../config/koneksi.php';
+$email_user = $_SESSION['email'];
+
+// 1. Ambil data Akun dari tabel 'users'
+$queryUser = mysqli_query($conn, "SELECT * FROM users WHERE email='$email_user'");
+$data_user = mysqli_fetch_assoc($queryUser);
+$user_id = $data_user['id'];
+
+// 2. Ambil data Biodata dari tabel 'alumni_profiles'
+$queryProfil = mysqli_query($conn, "SELECT * FROM alumni_profiles WHERE user_id='$user_id'");
+$data_profil = mysqli_fetch_assoc($queryProfil);
+
+// Ambil ID profil untuk mencari data pengajuan (jika profilnya sudah ada)
+$profil_id = isset($data_profil['id']) ? $data_profil['id'] : 0;
+
+// 3. Ambil data Riwayat Pengajuan dari tabel 'update_requests' menggunakan alumni_id
+$queryRequest = mysqli_query($conn, "SELECT * FROM update_requests WHERE alumni_id='$profil_id' ORDER BY id DESC");
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Profil - Alumni IPB Pedia</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER NAVIGATION -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">alumniipbpedia</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.php">BERANDA</a></li>
+                    <li><a href="#">UPDATE DATA</a></li>
+                    <li><a href="profil.php" class="active">PROFIL</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- LAYOUT UTAMA: SIDEBAR & KONTEN -->
+        <div class="dashboard-layout">
+
+            <!-- MENU SIDEBAR PROFIL -->
+            <aside class="profile-sidebar">
+                <div class="user-avatar-section">
+                    <div class="avatar-big">
+                        <?= strtoupper(substr($data_user['nama'], 0, 1)); ?>
+                    </div>
+                    <h3>
+                        <?= $data_user['nama']; ?>
+                    </h3>
+                    <span class="badge-role">
+                        <?= strtoupper($data_user['role']); ?>
+                    </span>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="#biodata" class="menu-item active">👤 Biodata Alumni</a>
+                    <a href="#status-pengajuan" class="menu-item">📝 Status Pengajuan</a>
+                    <a href="#ubah-password" class="menu-item">🔒 Ubah Password</a>
+                    <a href="logout.php" class="menu-item logout-link">🚪 Logout</a>
+                </nav>
+            </aside>
+
+            <!-- KONTEN UTAMA UTK TIAP FITUR -->
+            <main class="profile-main-content">
+
+                <!-- FITUR 1: NAMA AKUN & BIODATA -->
+                <section id="biodata" class="content-section">
+                    <div class="section-header-box">
+                        <h2>Biodata Alumni</h2>
+                        <button class="btn-primary-action">Pengajuan Update Data</button>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-group">
+                            <label>Nama Akun</label>
+                            <p>
+                                <?= $data_user['nama']; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Email Resmi</label>
+                            <p>
+                                <?= $data_user['email']; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Tahun Kelulusan</label>
+                            <p>
+                                <?= $data_profil['tahun_kelulusan'] ?? '- Belum diisi -'; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Angkatan</label>
+                            <p>
+                                <?= $data_profil['angkatan'] ?? '- Belum diisi -'; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Pekerjaan Saat Ini</label>
+                            <p>
+                                <?= $data_profil['pekerjaan'] ?? '- Belum diisi -'; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Perusahaan</label>
+                            <p>
+                                <?= $data_profil['perusahaan'] ?? '- Belum diisi -'; ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FITUR 2: STATUS PENGAJUAN UPDATE -->
+                <section id="status-pengajuan" class="content-section" style="margin-top: 30px;">
+                    <div class="section-header-box">
+                        <h2>Status Pengajuan Perubahan Data</h2>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Pekerjaan Baru</th>
+                                    <th>Perusahaan Baru</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($queryRequest && mysqli_num_rows($queryRequest) > 0): ?>
+                                    <?php while ($row = mysqli_fetch_assoc($queryRequest)): ?>
+                                        <tr>
+                                            <td>
+                                                <?= date('d M Y', strtotime($row['created_at'])); ?>
+                                            </td>
+                                            <td>
+                                                <?= $row['pekerjaan_baru'] ?? '-'; ?>
+                                            </td>
+                                            <td>
+                                                <?= $row['perusahaan_baru'] ?? '-'; ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row['status'] == 'approved'): ?>
+                                                    <span class="status-badge approved">Disetujui</span>
+                                                <?php elseif ($row['status'] == 'rejected'): ?>
+                                                    <span class="status-badge rejected">Ditolak</span>
+                                                <?php else: ?>
+                                                    <span class="status-badge pending">Diproses</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="4" class="empty-table-text">Belum ada riwayat pengajuan update data.
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- FITUR 3: UBAH PASSWORD -->
+                <section id="ubah-password" class="content-section" style="margin-top: 30px;">
+                    <div class="section-header-box">
+                        <h2>Keamanan Akun (Ubah Password)</h2>
+                    </div>
+
+                    <form action="../app/controller/UpdatePassword.php" method="POST" class="password-form">
+                        <div class="form-group">
+                            <label for="pass_lama">Password Sekarang</label>
+                            <input type="password" id="pass_lama" name="pass_lama"
+                                placeholder="Masukkan password saat ini..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass_baru">Password Baru</label>
+                            <input type="password" id="pass_baru" name="pass_baru"
+                                placeholder="Masukkan password baru..." required>
+                        </div>
+                        <button type="submit" class="btn-save-password">Simpan Password Baru</button>
+                    </form>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

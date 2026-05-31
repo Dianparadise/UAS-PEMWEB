@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 require_once '../config/koneksi.php';
 $queryTerbaru = mysqli_query($conn, "
     SELECT 
@@ -36,10 +36,15 @@ $queryTerbaru = mysqli_query($conn, "
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#" class="active">BERANDA</a></li>
+                    <li><a href="index.php" class="active">BERANDA</a></li>
                     <li><a href="#">UPDATE DATA</a></li>
-                    <li><a href="#">LOGIN</a></li>
-                    <li><a href="#">PROFIL</a></li>
+
+                    <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login'): ?>
+                        <li><a href="profil.php">PROFIL (<?= $_SESSION['nama']; ?>)</a></li>
+                        <li><a href="logout.php" style="color: #ff4d4d; font-weight: bold;">LOGOUT</a></li>
+                    <?php else: ?>
+                        <li><a href="login.php">LOGIN</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
             <div class="header-search">
@@ -59,36 +64,32 @@ $queryTerbaru = mysqli_query($conn, "
         <div class="content-middle-grid">
 
             <section class="section-terbaru">
-    <h2 class="section-title">TERBARU</h2>
+                <h2 class="section-title">TERBARU</h2>
 
-    <div class="alumni-grid">
+                <div class="alumni-grid">
 
-        <?php while($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
+                    <?php while ($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
 
-            <div class="card-alumni">
+                        <div class="card-alumni">
 
-                <img 
-                    src="../<?php echo $baru['foto']; ?>"
-                    alt="<?php echo $baru['nama']; ?>"
-                    loading="lazy"
-                >
+                            <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
 
-                <h3>
-                    <?php echo $baru['nama']; ?>
-                </h3>
+                            <h3>
+                                <?php echo $baru['nama']; ?>
+                            </h3>
 
-                <p class="meta small-meta">
-                     <?php echo $baru['tahun_kelulusan']; ?>
-                    <?php echo $baru['pekerjaan']; ?>
+                            <p class="meta small-meta">
+                                <?php echo $baru['tahun_kelulusan']; ?>
+                                <?php echo $baru['pekerjaan']; ?>
 
-                </p>
+                            </p>
 
-            </div>
+                        </div>
 
-        <?php endwhile; ?>
+                    <?php endwhile; ?>
 
-    </div>
-</section>
+                </div>
+            </section>
         </div>
     </main>
 

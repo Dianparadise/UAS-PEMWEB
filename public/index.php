@@ -1,20 +1,15 @@
-
 <?php
 session_start();
-
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
 require_once '../config/koneksi.php';
 require_once '../app/controller/HomeController.php';
 
 $controller = new HomeController();
 
 $queryTerbaru = $controller->index();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -60,8 +55,6 @@ $queryTerbaru = $controller->index();
 
     <main class="container">
 
-
-
         <div class="content-middle-grid">
 
             <section class="section-terbaru">
@@ -71,22 +64,22 @@ $queryTerbaru = $controller->index();
 
                     <?php while ($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
 
-                        <div class="card-alumni">
+                        <a href="detail.php?id=<?php echo $baru['user_id']; ?>" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="card-alumni">
 
-                            <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
+                                <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
 
-                            <h3>
-                                <?php echo $baru['nama']; ?>
-                            </h3>
+                                <h3>
+                                    <?php echo $baru['nama']; ?>
+                                </h3>
 
-                            <p class="meta small-meta">
-                                <?php echo $baru['tahun_kelulusan']; ?>
-                                <?php echo $baru['pekerjaan']; ?>
+                                <p class="meta small-meta">
+                                    <?php echo $baru['tahun_kelulusan']; ?>
+                                    <?php echo $baru['pekerjaan']; ?>
+                                </p>
 
-                            </p>
-
-                        </div>
-
+                            </div>
+                        </a>
                     <?php endwhile; ?>
 
                 </div>

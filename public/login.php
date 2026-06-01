@@ -21,6 +21,8 @@
         if (isset($_GET['pesan'])) {
             if ($_GET['pesan'] == "gagal") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Username atau Password salah!</p>";
+            } else if ($_GET['pesan'] == "registrasi_sukses") {
+                echo "<p style='color: #155724; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #d4edda; padding: 10px; border-radius: 5px;'>Akun berhasil dibuat! Silakan login.</p>";
             }
         }
         ?>
@@ -39,7 +41,7 @@
             <button type="submit" class="btn-login">Masuk</button>
 
             <div class="login-footer">
-                <p>Belum punya akun? <a href="#">Daftar sekarang</a></p>
+                <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
                 <p><a href="index.php">← Kembali ke Beranda</a></p>
             </div>
         </form>

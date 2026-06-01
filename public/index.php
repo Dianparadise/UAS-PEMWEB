@@ -33,7 +33,7 @@ $queryTerbaru = $controller->index();
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.php" class="active">BERANDA</a></li>
-                    <li><a href="#">UPDATE DATA</a></li>
+                    <li><a href="update_data.php">UPDATE DATA</a></li>
 
                     <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login'): ?>
                         <li><a href="profil.php">PROFIL (<?= $_SESSION['nama']; ?>)</a></li>
@@ -64,10 +64,12 @@ $queryTerbaru = $controller->index();
 
                     <?php while ($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
 
-                        <a href="detail.php?id=<?php echo $baru['user_id']; ?>" style="text-decoration: none; color: inherit; display: block;">
+                        <a href="detail.php?id=<?php echo $baru['user_id']; ?>"
+                            style="text-decoration: none; color: inherit; display: block;">
                             <div class="card-alumni">
 
-                                <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
+                                <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>"
+                                    loading="lazy">
 
                                 <h3>
                                     <?php echo $baru['nama']; ?>

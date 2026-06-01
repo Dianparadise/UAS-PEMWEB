@@ -35,8 +35,8 @@ class AlumniHomeModel
             FROM alumni_profiles
             JOIN users 
                 ON alumni_profiles.user_id = users.id
-            ORDER BY alumni_profiles.created_at DESC
-            LIMIT 6
+            ORDER BY alumni_profiles.tahun_kelulusan DESC
+            LIMIT 15
         ");
 
         return $query;
@@ -63,4 +63,95 @@ class AlumniHomeModel
 
         return mysqli_fetch_assoc($query);
     }
+    public static function search($search) {
+
+    global $conn;
+
+    $sql = "
+        SELECT 
+            alumni_profiles.*,
+            users.nama
+        FROM alumni_profiles
+        JOIN users
+            ON alumni_profiles.user_id = users.id
+        WHERE 
+            users.nama LIKE '%$search%'
+            OR alumni_profiles.pekerjaan LIKE '%$search%'
+        ORDER BY alumni_profiles.created_at DESC
+    ";
+
+    return mysqli_query($conn, $sql);
+
+    
 }
+    public static function filter(
+    $search,
+    $tahun,
+    $angkatan,
+    $jurusan,
+    $fakultas
+) {
+
+    global $conn;
+
+    $sql = "
+        SELECT 
+            alumni_profiles.*,
+            users.nama
+        FROM alumni_profiles
+        JOIN users
+            ON alumni_profiles.user_id = users.id
+        WHERE 1=1
+    ";
+
+    // SEARCH
+    if (!empty($search)) {
+
+        $sql .= "
+            AND (
+                users.nama LIKE '%$search%'
+                OR alumni_profiles.pekerjaan LIKE '%$search%'
+            )
+        ";
+    }
+
+    // TAHUN
+    if (!empty($tahun)) {
+
+        $sql .= "
+            AND alumni_profiles.tahun_kelulusan = '$tahun'
+        ";
+    }
+
+    // ANGKATAN
+    if (!empty($angkatan)) {
+
+        $sql .= "
+            AND alumni_profiles.angkatan = '$angkatan'
+        ";
+    }
+
+    // JURUSAN
+    if (!empty($jurusan)) {
+
+        $sql .= "
+            AND alumni_profiles.jurusan = '$jurusan'
+        ";
+    }
+
+    // FAKULTAS
+    if (!empty($fakultas)) {
+
+        $sql .= "
+            AND alumni_profiles.fakultas = '$fakultas'
+        ";
+    }
+
+    $sql .= "
+        ORDER BY alumni_profiles.created_at DESC
+    ";
+
+    return mysqli_query($conn, $sql);
+}
+}
+

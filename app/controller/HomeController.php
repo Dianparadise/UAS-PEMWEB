@@ -5,19 +5,38 @@ require_once __DIR__ . '/../model/AlumniModel.php';
 class HomeController
 {
 
-    public function index()
-    {
+    public function index(
+    $search,
+    $tahun,
+    $angkatan,
+    $jurusan,
+    $fakultas
+) {
 
-        $queryTerbaru = AlumniHomeModel::getTerbaru();
+    // Kalau semua kosong
+    if (
+        trim($search) == '' &&
+        trim($tahun) == '' &&
+        trim($angkatan) == '' &&
+        trim($jurusan) == '' &&
+        trim($fakultas) == ''
+    ) {
 
-        return $queryTerbaru;
+        return AlumniHomeModel::getTerbaru();
     }
 
-    public function detail($user_id)
+    // Kalau ada filter/search
+    return AlumniHomeModel::filter(
+        $search,
+        $tahun,
+        $angkatan,
+        $jurusan,
+        $fakultas
+    );
+}
+public function detail($user_id)
     {
 
-        $queryDetail = AlumniHomeModel::getDetail($user_id);
-
-        return $queryDetail;
+        return AlumniHomeModel::getDetail($user_id);
     }
 }

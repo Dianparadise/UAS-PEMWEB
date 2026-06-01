@@ -44,6 +44,11 @@
                 <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
                 <p><a href="index.php">← Kembali ke Beranda</a></p>
             </div>
+            <div class="login-footer">
+                <p><a href="forgot_password.php" style="color: #315739; font-weight: bold;">Lupa Password?</a></p>
+                <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
+                <p><a href="index.php">← Kembali ke Beranda</a></p>
+            </div>
         </form>
     </div>
 

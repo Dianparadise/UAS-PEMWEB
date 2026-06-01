@@ -41,54 +41,7 @@ if (!$alumniDetail) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail - <?= htmlspecialchars($alumniDetail['nama']); ?></title>
     <link rel="stylesheet" href="../asset/css/style.css">
-    <style>
-        /* CSS tambahan khusus untuk halaman detail agar rapi */
-        .detail-wrapper {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            margin-top: 40px;
-            display: flex;
-            gap: 40px;
-        }
 
-        .detail-foto img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .detail-info h2 {
-            margin-top: 0;
-            color: #2c5e38;
-            /* Warna hijau khas UI kamu */
-            font-size: 28px;
-        }
-
-        .detail-info p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            color: #555;
-        }
-
-        .btn-kembali {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2c5e38;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .btn-kembali:hover {
-            background-color: #1f4227;
-        }
-    </style>
 </head>
 
 <body>
@@ -123,12 +76,12 @@ if (!$alumniDetail) {
             <div class="detail-info">
                 <h2><?= htmlspecialchars($alumniDetail['nama']); ?></h2>
 
-                <p class="alumni-bio">
-                    "<?= htmlspecialchars($alumniDetail['bio'] ?? 'Belum menuliskan deskripsi profil.'); ?>"
-                </p>
+
 
                 <hr style="border: 1px solid #eee; margin-bottom: 20px;">
 
+                <p></p><strong>Fakultas :</strong> <?= htmlspecialchars($alumniDetail['fakultas'] ?? '-'); ?></p>
+                <p><strong>Jurusan :</strong> <?= htmlspecialchars($alumniDetail['jurusan'] ?? '-'); ?></p>
                 <p><strong>Angkatan :</strong> <?= htmlspecialchars($alumniDetail['angkatan'] ?? '-'); ?></p>
                 <p><strong>Tahun Kelulusan :</strong> <?= htmlspecialchars($alumniDetail['tahun_kelulusan'] ?? '-'); ?></p>
                 <p><strong>Pekerjaan Saat Ini :</strong> <?= htmlspecialchars($alumniDetail['pekerjaan'] ?? '-'); ?></p>
@@ -136,13 +89,26 @@ if (!$alumniDetail) {
 
                 <p><strong>Email Resmi :</strong> <?= htmlspecialchars($alumniDetail['email'] ?? '-'); ?></p>
 
-                <?php if (!empty($alumniDetail['linkedin'])): ?>
-                    <p><strong>LinkedIn :</strong> <?= htmlspecialchars($alumniDetail['linkedin']); ?></p>
+                <<?php if (!empty($alumniDetail['linkedin'])): ?>
+                    <p><strong>LinkedIn :</strong>
+                    <a href="<?= htmlspecialchars($alumniDetail['linkedin']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
+                        <?= htmlspecialchars($alumniDetail['linkedin']); ?>
+                    </a>
+                    </p>
                 <?php endif; ?>
 
                 <?php if (!empty($alumniDetail['instagram'])): ?>
-                    <p><strong>Instagram :</strong> <?= htmlspecialchars($alumniDetail['instagram']); ?></p>
+                    <p><strong>Instagram :</strong>
+                        <a href="<?= htmlspecialchars($alumniDetail['instagram']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
+                            <?= htmlspecialchars($alumniDetail['instagram']); ?>
+                        </a>
+                    </p>
                 <?php endif; ?>
+                <p class="alumni-bio" style="line-height: 1.6; text-align: justify; color: #555; font-style: italic;">
+                    "<?= htmlspecialchars($alumniDetail['biografi'] ?? 'Belum menuliskan deskripsi profil.'); ?>"
+                </p>
+
+                <hr style="border: 1px solid #eee; margin-bottom: 20px;">
 
                 <a href="index.php" class="btn-kembali">&larr; Kembali ke Beranda</a>
             </div>

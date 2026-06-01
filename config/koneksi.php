@@ -1,8 +1,7 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "alumni_db");
+$conn = mysqli_connect("localhost", "root", "", "alumnidb");
 
 if (!$conn) {
     die("Koneksi gagal");
 }
-?>

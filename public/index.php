@@ -45,11 +45,10 @@ $queryTerbaru = $controller->index(
             <!-- LOGO -->
             <div class="logo">
 
-                <img 
-                    src="../asset/img/logo.png" 
-                    alt="Logo" 
-                    class="logo-img"
-                >
+                <img
+                    src="../asset/img/logo.png"
+                    alt="Logo"
+                    class="logo-img">
 
                 <span class="logo-text">
                     alumniipbpedia
@@ -86,13 +85,12 @@ $queryTerbaru = $controller->index(
                         </li>
 
                         <li>
-                            <a 
+                            <a
                                 href="logout.php"
                                 style="
                                     color:#ff4d4d;
                                     font-weight:bold;
-                                "
-                            >
+                                ">
                                 LOGOUT
                             </a>
                         </li>
@@ -114,12 +112,11 @@ $queryTerbaru = $controller->index(
             <!-- SEARCH -->
             <form class="header-search" method="GET">
 
-                <input 
+                <input
                     type="text"
                     name="search"
                     placeholder="Cari nama / pekerjaan..."
-                    value="<?= $_GET['search'] ?? ''; ?>"
-                >
+                    value="<?= $_GET['search'] ?? ''; ?>">
 
                 <button type="submit">
                     🔍
@@ -143,108 +140,59 @@ $queryTerbaru = $controller->index(
 
                 <form method="GET" class="sidebar-filter">
 
-                    <!-- SEARCH TETAP DIBAWA -->
-                    <input 
-                        type="hidden"
-                        name="search"
-                        value="<?= $_GET['search'] ?? ''; ?>"
-                    >
+                    <input type="hidden" name="search" value="<?= $_GET['search'] ?? ''; ?>">
 
-                    <!-- TAHUN -->
-                    <label>
-                        Tahun Kelulusan
-                    </label>
+                    <label>Tahun Kelulusan</label>
+                    <input
+                        type="number"
+                        name="tahun"
+                        value="<?= htmlspecialchars($tahun); ?>"
+                        placeholder="Contoh: 2024"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
 
-                    <select name="tahun">
-
-                        <option value="">
-                            Semua
-                        </option>
-
-                        <option value="2024">
-                            2024
-                        </option>
-
-                        <option value="2023">
-                            2023
-                        </option>
-
-                        <option value="2022">
-                            2022
-                        </option>
-
-                    </select>
-
-                    <!-- ANGKATAN -->
-                    <label>
-                        Angkatan
-                    </label>
-
-                    <select name="angkatan">
-
-                        <option value="">
-                            Semua
-                        </option>
-
-                        <option value="2020">
-                            2020
-                        </option>
-
-                        <option value="2021">
-                            2021
-                        </option>
-
-                        <option value="2022">
-                            2022
-                        </option>
-
-                    </select>
-
-                    <!-- JURUSAN -->
-                    <label>
-                        Jurusan
-                    </label>
-
+                    <label>Angkatan</label>
+                    <input
+                        type="number"
+                        name="angkatan"
+                        value="<?= htmlspecialchars($angkatan); ?>"
+                        placeholder="Contoh: 2020"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
+                    <label>Jurusan</label>
                     <select name="jurusan">
+                        <option value="">Semua</option>
 
-                        <option value="">
-                            Semua
-                        </option>
+                        <option value="Teknik Informatika" <?php if ($jurusan == 'Teknik Informatika') echo 'selected'; ?>>Teknik Informatika</option>
+                        <option value="Sistem Informasi" <?php if ($jurusan == 'Sistem Informasi') echo 'selected'; ?>>Sistem Informasi</option>
+                        <option value="Sains Data" <?php if ($jurusan == 'Sains Data') echo 'selected'; ?>>Sains Data</option>
+                        <option value="Bisnis Digital" <?php if ($jurusan == 'Bisnis Digital') echo 'selected'; ?>>Bisnis Digital</option>
 
-                        <option value="Teknik Informatika">
-                            Teknik Informatika
-                        </option>
+                        <option value="Teknik Industri" <?php if ($jurusan == 'Teknik Industri') echo 'selected'; ?>>Teknik Industri</option>
+                        <option value="Teknik Sipil" <?php if ($jurusan == 'Teknik Sipil') echo 'selected'; ?>>Teknik Sipil</option>
+                        <option value="Teknik Lingkungan" <?php if ($jurusan == 'Teknik Lingkungan') echo 'selected'; ?>>Teknik Lingkungan</option>
+                        <option value="Teknik Kimia" <?php if ($jurusan == 'Teknik Kimia') echo 'selected'; ?>>Teknik Kimia</option>
+                        <option value="Teknologi Pangan" <?php if ($jurusan == 'Teknologi Pangan') echo 'selected'; ?>>Teknologi Pangan</option>
 
-                        <option value="Sistem Informasi">
-                            Sistem Informasi
-                        </option>
-
+                        <option value="Manajemen" <?php if ($jurusan == 'Manajemen') echo 'selected'; ?>>Manajemen</option>
+                        <option value="Akuntansi" <?php if ($jurusan == 'Akuntansi') echo 'selected'; ?>>Akuntansi</option>
+                        <option value="Ilmu Komunikasi" <?php if ($jurusan == 'Ilmu Komunikasi') echo 'selected'; ?>>Ilmu Komunikasi</option>
+                        <option value="Hubungan Internasional" <?php if ($jurusan == 'Hubungan Internasional') echo 'selected'; ?>>Hubungan Internasional</option>
+                        <option value="Administrasi Bisnis" <?php if ($jurusan == 'Administrasi Bisnis') echo 'selected'; ?>>Administrasi Bisnis</option>
+                        <option value="Administrasi Publik" <?php if ($jurusan == 'Administrasi Publik') echo 'selected'; ?>>Administrasi Publik</option>
                     </select>
-
-                    <!-- FAKULTAS -->
-                    <label>
-                        Fakultas
-                    </label>
-
+                    <label>Fakultas</label>
                     <select name="fakultas">
+                        <option value="">Semua</option>
 
-                        <option value="">
-                            Semua
-                        </option>
-
-                        <option value="Ilmu Komputer">
-                            Ilmu Komputer
-                        </option>
-
-                        <option value="Teknik">
-                            Teknik
-                        </option>
-
+                        <option value="Ilmu Komputer" <?php if ($fakultas == 'Ilmu Komputer') echo 'selected'; ?>>Ilmu Komputer</option>
+                        <option value="Teknik" <?php if ($fakultas == 'Teknik') echo 'selected'; ?>>Teknik</option>
+                        <option value="Ekonomi dan Bisnis" <?php if ($fakultas == 'Ekonomi dan Bisnis') echo 'selected'; ?>>Ekonomi dan Bisnis</option>
+                        <option value="Ilmu Sosial dan Ilmu Politik" <?php if ($fakultas == 'Ilmu Sosial dan Ilmu Politik') echo 'selected'; ?>>Ilmu Sosial dan Ilmu Politik</option>
+                        <option value="Pertanian" <?php if ($fakultas == 'Pertanian') echo 'selected'; ?>>Pertanian</option>
+                        <option value="Hukum" <?php if ($fakultas == 'Hukum') echo 'selected'; ?>>Hukum</option>
+                        <option value="Arsitektur dan Desain" <?php if ($fakultas == 'Arsitektur dan Desain') echo 'selected'; ?>>Arsitektur dan Desain</option>
                     </select>
 
-                    <button type="submit">
-                        Terapkan Filter
-                    </button>
+                    <button type="submit">Terapkan Filter</button>
 
                 </form>
 
@@ -261,44 +209,56 @@ $queryTerbaru = $controller->index(
 
                     <div class="alumni-grid">
 
-                        <?php while (
-                            $baru = mysqli_fetch_assoc($queryTerbaru)
-                        ): ?>
+                        <?php if (mysqli_num_rows($queryTerbaru) > 0): ?>
 
-                            <a 
-                                href="detail.php?id=<?php echo $baru['user_id']; ?>"
-                                style="
-                                    text-decoration:none;
-                                    color:inherit;
-                                    display:block;
-                                "
-                            >
+                            <?php while (
+                                $baru = mysqli_fetch_assoc($queryTerbaru)
+                            ): ?>
 
-                                <div class="card-alumni">
+                                <a
+                                    href="detail.php?id=<?php echo $baru['user_id']; ?>"
+                                    style="
+                    text-decoration:none;
+                    color:inherit;
+                    display:block;
+                ">
 
-                                    <img
-                                        src="../<?php echo $baru['foto']; ?>"
-                                        alt="<?php echo $baru['nama']; ?>"
-                                        loading="lazy"
-                                    >
+                                    <div class="card-alumni">
 
-                                    <h3>
-                                        <?php echo $baru['nama']; ?>
-                                    </h3>
+                                        <img
+                                            src="../<?php echo $baru['foto']; ?>"
+                                            alt="<?php echo $baru['nama']; ?>"
+                                            loading="lazy">
 
-                                    <p class="meta small-meta">
+                                        <h3>
+                                            <?php echo $baru['nama']; ?>
+                                        </h3>
 
-                                        <?php echo $baru['tahun_kelulusan']; ?>
+                                        <p class="meta small-meta">
 
-                                        <?php echo $baru['pekerjaan']; ?>
+                                            <?php echo $baru['tahun_kelulusan']; ?> |
 
-                                    </p>
+                                            <?php echo $baru['pekerjaan']; ?>
 
-                                </div>
+                                        </p>
 
-                            </a>
+                                    </div>
 
-                        <?php endwhile; ?>
+                                </a>
+
+                            <?php endwhile; ?>
+
+                        <?php else: ?>
+
+                            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background-color: #f8f9fa; border-radius: 12px; border: 2px dashed #ddd;">
+                                <h3 style="color: #555; margin-bottom: 10px; font-size: 1.5rem;">🔍 Data Tidak Ditemukan</h3>
+                                <p style="color: #777; margin-bottom: 20px;">Maaf, tidak ada alumni yang sesuai dengan filter atau pencarian Anda.</p>
+                                <a href="index.php" style="display: inline-block; padding: 10px 20px; background-color: #2c5e38; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s;">
+                                    ↺ Reset Filter
+                                </a>
+                            </div>
+
+                        <?php endif; ?>
 
                     </div>
 

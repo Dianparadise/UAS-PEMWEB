@@ -55,18 +55,56 @@ $queryRequest = $data['request'];
 
             <!-- MENU SIDEBAR PROFIL -->
             <aside class="profile-sidebar">
-                <div class="user-avatar-section">
-                    <div class="avatar-big">
-                        <?= strtoupper(substr($data_user['nama'], 0, 1)); ?>
+                <div class="user-avatar-section" style="text-align: center;">
+
+                    <div class="avatar-big" style="width: 140px; height: 140px; overflow: hidden; padding: 0; background: #fff; border: 4px solid #2c5e38; margin: 0 auto 15px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        <img id="preview-foto" src="../<?= htmlspecialchars($data_profil['foto'] ?? 'asset/img/default-avatar.png'); ?>" alt="Foto Profil" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3>
+
+                    <form action="../app/controller/UpdateFotoController.php" method="POST" enctype="multipart/form-data" style="margin-bottom: 25px;">
+
+                        <input type="file" name="foto_profil" id="input-foto" accept="image/jpeg, image/png, image/jpg" required style="display: none;" onchange="previewImage(event)">
+
+                        <label for="input-foto" style="display: inline-block; background-color: #f1f1f1; color: #333; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; border: 1px solid #ddd; transition: all 0.3s ease; margin-bottom: 10px;">
+                            📷 Pilih Foto Baru
+                        </label>
+
+                        <br>
+
+                        <button id="btn-simpan" type="submit" style="display: none; background-color: #2c5e38; color: white; border: none; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.85rem; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(44, 94, 56, 0.2);">
+                            💾 Simpan Perubahan
+                        </button>
+                    </form>
+
+                    <h3 style="margin-bottom: 5px; color: #333; font-size: 1.3rem;">
                         <?= $data_user['nama']; ?>
                     </h3>
-                    <span class="badge-role">
+                    <span class="badge-role" style="background-color: #e8f5e9; color: #2c5e38; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">
                         <?= strtoupper($data_user['role']); ?>
                     </span>
                 </div>
 
+                <script>
+                    function previewImage(event) {
+                        var reader = new FileReader();
+                        reader.onload = function() {
+                            // Langsung ganti gambar di lingkaran tanpa perlu refresh/simpan dulu
+                            var output = document.getElementById('preview-foto');
+                            output.src = reader.result;
+
+                            // Ubah tombol "Pilih Foto" jadi warna hijau sebagai tanda sukses
+                            var label = document.querySelector('label[for="input-foto"]');
+                            label.style.backgroundColor = '#e8f5e9';
+                            label.style.borderColor = '#2c5e38';
+                            label.style.color = '#2c5e38';
+                            label.innerHTML = '✔️ Foto Terpilih, Siap Disimpan!';
+
+                            // Munculkan tombol simpan dengan efek perlahan
+                            document.getElementById('btn-simpan').style.display = 'inline-block';
+                        };
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
                 <nav class="sidebar-menu">
                     <a href="#biodata" class="menu-item active">👤 Biodata Alumni</a>
                     <a href="#status-pengajuan" class="menu-item">📝 Status Pengajuan</a>
@@ -96,6 +134,18 @@ $queryRequest = $data['request'];
                             <label>Email Resmi</label>
                             <p>
                                 <?= $data_user['email']; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Fakultas</label>
+                            <p>
+                                <?= htmlspecialchars($data_profil['fakultas'] ?? '- Belum diisi -'); ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Jurusan</label>
+                            <p>
+                                <?= htmlspecialchars($data_profil['jurusan'] ?? '- Belum diisi -'); ?>
                             </p>
                         </div>
                         <div class="info-group">

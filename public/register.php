@@ -26,10 +26,13 @@
             } else if ($_GET['pesan'] == "gagal") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Terjadi kesalahan, coba lagi.</p>";
             }
+            echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Tahun Angkatan wajib diisi!</p>";
+        } else if ($_GET['pesan'] == "gagal") {
+            echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Terjadi kesalahan, coba lagi.</p>";
         }
         ?>
 
-        <form action="../app/controller/Register.php" method="POST" class="login-form">
+        <form action="../app/controller/RegisterController.php" method="POST" class="login-form">
             <div class="input-group">
                 <label for="nama">Nama Lengkap</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap..." required>

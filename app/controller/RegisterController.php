@@ -8,34 +8,40 @@ $role = mysqli_real_escape_string($conn, $_POST['role']);
 $password = $_POST['password'];
 $konfirmasi_password = $_POST['konfirmasi_password'];
 
-// 2. TRIK MENGATASI "OUT OF RANGE":
-// Jika form kosong, ubah menjadi NULL agar MySQL tidak error
-$angkatan = !empty($_POST['angkatan']) ? "'" . mysqli_real_escape_string($conn, $_POST['angkatan']) . "'" : "NULL";
+// 2. VALIDASI ANGKATAN (WAJIB DIISI!)
+// Jika kosong, langsung tolak dan kembalikan ke halaman register
+if (empty($_POST['angkatan'])) {
+    header("location:../../public/register.php?pesan=angkatan_kosong");
+    exit;
+}
+// Jika ada isinya, amankan datanya dan beri tanda kutip
+$angkatan = "'" . mysqli_real_escape_string($conn, $_POST['angkatan']) . "'";
+
+// 3. TAHUN KELULUSAN (Boleh kosong/NULL jika yang daftar adalah Mahasiswa)
 $tahun_kelulusan = !empty($_POST['tahun_kelulusan']) ? "'" . mysqli_real_escape_string($conn, $_POST['tahun_kelulusan']) . "'" : "NULL";
 
-// 3. Validasi Password
+// 4. Validasi Password
 if ($password !== $konfirmasi_password) {
     header("location:../../public/register.php?pesan=password_beda");
     exit;
 }
 
-// 4. Validasi Email Kembar
+// 5. Validasi Email Kembar
 $cek_email = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
 if (mysqli_num_rows($cek_email) > 0) {
     header("location:../../public/register.php?pesan=email_kembar");
     exit;
 }
 
-// 5. Masukkan ke tabel `users`
+// 6. Masukkan ke tabel `users`
 $query_user = "INSERT INTO users (nama, email, password, role, created_at) VALUES ('$nama', '$email', '$password', '$role', NOW())";
 
 if (mysqli_query($conn, $query_user)) {
     // Ambil ID user yang barusan otomatis dibikin
     $user_id_baru = mysqli_insert_id($conn);
 
-    // 6. Buatkan profil di tabel `alumni_profiles`
-    // PERHATIKAN: Variabel $angkatan dan $tahun_kelulusan tidak lagi diapit tanda kutip ('') 
-    // karena sudah kita atur di langkah ke-2 di atas.
+    // 7. Buatkan profil di tabel `alumni_profiles`
+    // Perhatikan: $angkatan tidak pakai kutip lagi karena sudah diatur di langkah nomor 2
     $query_profil = "INSERT INTO alumni_profiles (user_id, angkatan, tahun_kelulusan, created_at) VALUES ('$user_id_baru', $angkatan, $tahun_kelulusan, NOW())";
 
     mysqli_query($conn, $query_profil);

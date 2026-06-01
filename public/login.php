@@ -27,7 +27,7 @@
         }
         ?>
 
-        <form action="../app/controller/Login.php" method="POST" class="login-form">
+        <form action="../app/controller/LoginController.php" method="POST" class="login-form">
             <div class="input-group">
                 <label for="username">Email atau Username</label>
                 <input type="text" id="username" name="username" placeholder="Masukkan email / username..." required>
@@ -44,11 +44,7 @@
                 <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
                 <p><a href="index.php">← Kembali ke Beranda</a></p>
             </div>
-            <div class="login-footer">
-                <p><a href="forgot_password.php" style="color: #315739; font-weight: bold;">Lupa Password?</a></p>
-                <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
-                <p><a href="index.php">← Kembali ke Beranda</a></p>
-            </div>
+
         </form>
     </div>
 

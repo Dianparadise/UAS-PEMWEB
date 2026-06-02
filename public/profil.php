@@ -36,8 +36,8 @@ $queryRequest = $data['request'];
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
-                <span class="logo-text">alumniipbpedia</span>
+                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
+                    <span class="logo-text">alumniipbpedia</span>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -66,13 +66,13 @@ $queryRequest = $data['request'];
                         <input type="file" name="foto_profil" id="input-foto" accept="image/jpeg, image/png, image/jpg" required style="display: none;" onchange="previewImage(event)">
 
                         <label for="input-foto" style="display: inline-block; background-color: #f1f1f1; color: #333; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; border: 1px solid #ddd; transition: all 0.3s ease; margin-bottom: 10px;">
-                            📷 Pilih Foto Baru
+                            Edit Foto
                         </label>
 
                         <br>
 
                         <button id="btn-simpan" type="submit" style="display: none; background-color: #2c5e38; color: white; border: none; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.85rem; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(44, 94, 56, 0.2);">
-                            💾 Simpan Perubahan
+                            Simpan Perubahan
                         </button>
                     </form>
 
@@ -97,7 +97,7 @@ $queryRequest = $data['request'];
                             label.style.backgroundColor = '#e8f5e9';
                             label.style.borderColor = '#2c5e38';
                             label.style.color = '#2c5e38';
-                            label.innerHTML = '✔️ Foto Terpilih, Siap Disimpan!';
+                            label.innerHTML = 'Foto Terpilih, Siap Disimpan!';
 
                             // Munculkan tombol simpan dengan efek perlahan
                             document.getElementById('btn-simpan').style.display = 'inline-block';
@@ -106,10 +106,27 @@ $queryRequest = $data['request'];
                     }
                 </script>
                 <nav class="sidebar-menu">
-                    <a href="#biodata" class="menu-item active">👤 Biodata Alumni</a>
-                    <a href="#status-pengajuan" class="menu-item">📝 Status Pengajuan</a>
-                    <a href="#ubah-password" class="menu-item">🔒 Ubah Password</a>
-                    <a href="logout.php" class="menu-item logout-link">🚪 Logout</a>
+                    <nav class="sidebar-menu">
+                        <a href="#biodata" class="menu-item active">
+                            <img src="../uploads/biodata.png" alt="Biodata" class="menu-icon">
+                            Biodata Alumni
+                        </a>
+
+                        <a href="#status-pengajuan" class="menu-item">
+                            <img src="../uploads/status.png" alt="Status" class="menu-icon">
+                            Status Pengajuan
+                        </a>
+
+                        <a href="#ubah-password" class="menu-item">
+                            <img src="../uploads/password.png" alt="Password" class="menu-icon">
+                            Ubah Password
+                        </a>
+
+                        <a href="logout.php" class="menu-item logout-link">
+                            <img src="../uploads/logout.png" alt="Logout" class="menu-icon">
+                            Logout
+                        </a>
+                    </nav>
                 </nav>
             </aside>
 

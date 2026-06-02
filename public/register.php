@@ -12,26 +12,26 @@
 
     <div class="login-container" style="margin: 40px 0;">
         <div class="login-header">
-            <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
+            <!-- Menyamakan jalur logo dengan halaman login -->
+            <img src="../uploads/logo1.png" alt="Logo UPN" class="logo-img">
             <h2>Daftar Akun Baru</h2>
             <p>Isi data di bawah ini untuk membuat akun</p>
         </div>
 
         <?php
+        // Memasukkan SEMUA kondisi ke dalam pelindung isset() agar tidak error
         if (isset($_GET['pesan'])) {
             if ($_GET['pesan'] == "password_beda") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Password dan Konfirmasi tidak cocok!</p>";
             } else if ($_GET['pesan'] == "email_kembar") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Email sudah terdaftar!</p>";
+            } else if ($_GET['pesan'] == "angkatan_kosong") {
+                echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Tahun Angkatan wajib diisi!</p>";
             } else if ($_GET['pesan'] == "gagal") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Terjadi kesalahan, coba lagi.</p>";
             }
-            echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Tahun Angkatan wajib diisi!</p>";
-        } else if ($_GET['pesan'] == "gagal") {
-            echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Terjadi kesalahan, coba lagi.</p>";
         }
         ?>
-
         <form action="../app/controller/RegisterController.php" method="POST" class="login-form">
             <div class="input-group">
                 <label for="nama">Nama Lengkap</label>
@@ -99,16 +99,14 @@
                 kotakLulus.style.display = "none";
                 inputLulus.required = false;
                 inputLulus.value = ""; // Bersihkan data kalau tadi sempat diisi
-            }
-            else if (role === "alumni") {
+            } else if (role === "alumni") {
                 // ALUMNI: Munculkan Angkatan & Munculkan Lulus
                 kotakAngkatan.style.display = "block";
                 inputAngkatan.required = true;
 
                 kotakLulus.style.display = "block";
                 inputLulus.required = true;
-            }
-            else {
+            } else {
                 // DEFAULT (Belum milih): Sembunyikan semuanya
                 kotakAngkatan.style.display = "none";
                 inputAngkatan.required = false;

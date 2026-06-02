@@ -44,14 +44,9 @@ $queryTerbaru = $controller->index(
 
             <!-- LOGO -->
             <div class="logo">
-
-                <img
-                    src="../asset/img/logo.png"
-                    alt="Logo"
-                    class="logo-img">
-
-                <span class="logo-text">
-                    alumniipbpedia
+                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
+                    <span class="logo-text">
+                alumniipbpedia
                 </span>
 
             </div>

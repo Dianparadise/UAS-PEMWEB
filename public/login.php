@@ -9,10 +9,9 @@
 </head>
 
 <body class="login-body">
-
     <div class="login-container">
         <div class="login-header">
-            <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
+            <img src="../uploads/logo1.png" alt="Logo UPN" class="logo-img">
             <h2>Masuk ke Akun</h2>
             <p>Silakan login untuk update data alumni</p>
         </div>
@@ -20,7 +19,7 @@
         <?php
         if (isset($_GET['pesan'])) {
             if ($_GET['pesan'] == "gagal") {
-                echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Username atau Password salah!</p>";
+                echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Email atau Password salah!</p>";
             } else if ($_GET['pesan'] == "registrasi_sukses") {
                 echo "<p style='color: #155724; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #d4edda; padding: 10px; border-radius: 5px;'>Akun berhasil dibuat! Silakan login.</p>";
             }
@@ -29,7 +28,7 @@
 
         <form action="../app/controller/LoginController.php" method="POST" class="login-form">
             <div class="input-group">
-                <label for="username">Email atau Username</label>
+                <label for="username">Email</label>
                 <input type="text" id="username" name="username" placeholder="Masukkan email / username..." required>
             </div>
 
@@ -44,10 +43,8 @@
                 <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
                 <p><a href="index.php">← Kembali ke Beranda</a></p>
             </div>
-
         </form>
     </div>
-
 </body>
 
 </html>

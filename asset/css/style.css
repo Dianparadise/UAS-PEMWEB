@@ -52,8 +52,8 @@ body {
 }
 
 .logo-img {
-    height: 40px;
-    background-color: white;
+    height: 50px;
+
     /* Kalau logonya transparan, biar kelihatan */
     border-radius: 4px;
     padding: 2px;
@@ -480,19 +480,22 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #e8eaf6;
-    /* Latar belakang agak abu-abu kebiruan */
     margin: 0;
+    
+    /* Kode untuk memasang foto background dengan overlay hijau gelap transparan */
+background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)), url('../../uploads/bgLogin.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .login-container {
     background-color: white;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Bayangan ditebalkan sedikit agar kotak lebih "pop out" */
     width: 100%;
     max-width: 400px;
-    /* Lebar maksimal kotak login */
 }
 
 .login-header {
@@ -501,13 +504,13 @@ body {
 }
 
 .login-header img {
-    height: 50px;
-    margin-bottom: 10px;
+    height: 65px;
+    margin-bottom: 15px;
+    object-fit: contain;
 }
 
 .login-header h2 {
-    color: #1a237e;
-    /* Warna biru khas IPB Pedia kamu */
+    color: #2d5a3b;
     font-size: 1.5rem;
     margin-bottom: 5px;
 }
@@ -540,14 +543,13 @@ body {
 }
 
 .login-form input:focus {
-    border-color: #1a237e;
-    /* Efek garis biru saat kolom diklik */
+    border-color: #2d5a3b;
 }
 
 .btn-login {
     width: 100%;
     padding: 12px;
-    background-color: #1a237e;
+    background-color: #2d5a3b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -559,15 +561,29 @@ body {
 }
 
 .btn-login:hover {
-    background-color: #121858;
-    /* Warna tombol jadi lebih gelap saat di-hover */
+    background-color: #1e3d28;
 }
 
 .login-footer {
     text-align: center;
-    font-size: 0.85
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 15px;
 }
 
+.login-footer p {
+    margin-bottom: 8px;
+}
+
+.login-footer a {
+    color: #2d5a3b; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
 /* =========================================
    HALAMAN PROFIL
 ========================================= */
@@ -764,7 +780,9 @@ body {
 }
 
 .menu-item {
-    display: block;
+    display: flex;
+    align-items: center; /* Kunci agar ikon dan teks rata tengah secara vertikal */
+    gap: 12px;           /* Jarak antara ikon gambar dan teks */
     padding: 12px 15px;
     color: #555;
     text-decoration: none;
@@ -779,6 +797,15 @@ body {
     color: #1a237e;
 }
 
+/* Mengatur ukuran gambar ikon yang diambil dari folder uploads */
+.menu-icon {
+    width: 22px;         /* Lebar ikon mutlak */
+    height: 22px;        /* Tinggi ikon mutlak */
+    object-fit: contain; /* Memastikan gambar ikon tidak gepeng */
+    flex-shrink: 0;      /* Memastikan ikon tidak menyusut tertekan teks */
+}
+
+/* Khusus tombol logout agar tetap merah */
 .logout-link {
     margin-top: 20px;
     color: #e74c3c;

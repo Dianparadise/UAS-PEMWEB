@@ -39,8 +39,8 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
-                <span class="logo-text">alumniipbpedia</span>
+                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
+                    <span class="logo-text">alumniipbpedia</span>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -79,7 +79,7 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
                                 Jadi Alumni</button>
                         </form>
                     </div>
-                        <?php endif; ?>
+                <?php endif; ?>
 
                 <div class="card-box">
                     <div class="stepper">

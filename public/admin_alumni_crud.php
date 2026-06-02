@@ -24,15 +24,15 @@ $count_pending = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as tota
 
     <div class="admin-sidebar">
         <h2>Panel Admin</h2>
-        <a href="admin_dashboard.php">💻 Dashboard</a>
-        <a href="admin_validasi.php">📥 Validasi Data (<?= $count_pending ?>)</a>
-        <a href="admin_alumni_crud.php" class="active">👥 Kelola Data Alumni</a>
-        <a href="logout.php" class="logout">🚪 Logout</a>
+        <a href="admin_dashboard.php">Dashboard</a>
+        <a href="admin_validasi.php">Validasi Data (<?= $count_pending ?>)</a>
+        <a href="admin_alumni_crud.php" class="active">Kelola Data Alumni</a>
+        <a href="logout.php" class="logout">Logout</a>
     </div>
 
     <div class="admin-main-content">
         <div class="admin-header">
-            <h1>👥 Master Data Kelola Alumni (CRUD)</h1>
+            <h1>Master Data Kelola Alumni (CRUD)</h1>
             <p>Manajemen penuh modifikasi, pembaruan angkatan, dan penghapusan data akun alumni.</p>
         </div>
 
@@ -62,14 +62,14 @@ $count_pending = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as tota
                             <td><?= $row['perusahaan'] ? $row['perusahaan'] : '-' ?></td>
                             <td>
                                 <input type="hidden" name="id_profil" value="<?= $row['id'] ?>">
-                                <button type="submit" class="admin-btn admin-btn-edit">💾 Simpan</button>
+                                <button type="submit" class="admin-btn admin-btn-edit">Simpan</button>
                         </form>
 
                         <form action="../app/controller/DeleteAlumniController.php" method="POST" class="admin-inline-form">
                             <input type="hidden" name="id_profil" value="<?= $row['id'] ?>">
                             <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
                             <button type="submit" class="admin-btn admin-btn-delete"
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus akun alumni ini permanen?')">🗑️
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus akun alumni ini permanen?')">
                                 Hapus</button>
                         </form>
                         </td>

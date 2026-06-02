@@ -24,17 +24,17 @@ $count_pending = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as tota
 
     <div class="admin-sidebar">
         <h2>Panel Admin</h2>
-        <a href="admin_dashboard.php" class="active">💻 Dashboard</a>
-        <a href="admin_validasi.php">📥 Validasi Data (
+        <a href="admin_dashboard.php" class="active">Dashboard</a>
+        <a href="admin_validasi.php">Validasi Data (
             <?= $count_pending ?>)
         </a>
-        <a href="admin_alumni_crud.php">👥 Kelola Data Alumni</a>
-        <a href="logout.php" class="logout">🚪 Logout</a>
+        <a href="admin_alumni_crud.php">Kelola Data Alumni</a>
+        <a href="logout.php" class="logout">Logout</a>
     </div>
 
     <div class="admin-main-content">
         <div class="admin-header">
-            <h1>Selamat Datang, Admin! 👋</h1>
+            <h1>Selamat Datang, Admin! </h1>
             <p>Berikut adalah ringkasan aktivitas sistem data alumni hari ini.</p>
         </div>
 

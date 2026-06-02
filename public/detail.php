@@ -4,24 +4,23 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Panggil koneksi dan controller
+
 require_once '../config/koneksi.php';
 require_once '../app/controller/HomeController.php';
 
-// Pastikan model yang memuat class AlumniHomeModel ikut terpanggil.
-// (Jika file modelmu di-require di dalam HomeController, kamu bisa melewati baris ini)
+
 require_once '../app/model/AlumniModel.php';
 
-// 1. Tangkap parameter ID dari URL
+
 $user_id = isset($_GET['id']) ? $_GET['id'] : null;
 
-// Jika tidak ada ID, kembalikan ke halaman utama
+
 if (!$user_id) {
     header("Location: index.php");
     exit;
 }
 
-// 2. Ambil data menggunakan Controller
+
 $controller = new HomeController();
 $alumniDetail = $controller->detail($user_id);
 
@@ -49,8 +48,8 @@ if (!$alumniDetail) {
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
-                <span class="logo-text">alumniipbpedia</span>
+                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
+                    <span class="logo-text">alumniipbpedia</span>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -89,11 +88,11 @@ if (!$alumniDetail) {
 
                 <p><strong>Email Resmi :</strong> <?= htmlspecialchars($alumniDetail['email'] ?? '-'); ?></p>
 
-                <<?php if (!empty($alumniDetail['linkedin'])): ?>
+                <?php if (!empty($alumniDetail['linkedin'])): ?>
                     <p><strong>LinkedIn :</strong>
-                    <a href="<?= htmlspecialchars($alumniDetail['linkedin']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
-                        <?= htmlspecialchars($alumniDetail['linkedin']); ?>
-                    </a>
+                        <a href="<?= htmlspecialchars($alumniDetail['linkedin']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
+                            <?= htmlspecialchars($alumniDetail['linkedin']); ?>
+                        </a>
                     </p>
                 <?php endif; ?>
 

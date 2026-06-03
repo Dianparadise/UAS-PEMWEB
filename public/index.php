@@ -14,14 +14,21 @@ $tahun = $_GET['tahun'] ?? '';
 $angkatan = $_GET['angkatan'] ?? '';
 $jurusan = $_GET['jurusan'] ?? '';
 $fakultas = $_GET['fakultas'] ?? '';
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Tangkap nomor halaman
 
-$queryTerbaru = $controller->index(
+// Panggil controller dan ekstrak array yang dikembalikan
+$result = $controller->index(
     $search,
     $tahun,
     $angkatan,
     $jurusan,
-    $fakultas
+    $fakultas,
+    $page
 );
+
+$queryTerbaru = $result['data'];
+$total_pages = $result['total_pages'];
+$current_page = $result['current_page'];
 ?>
 
 <!DOCTYPE html>
@@ -37,21 +44,17 @@ $queryTerbaru = $controller->index(
 
 <body>
 
-    <!-- HEADER -->
     <header class="main-header">
 
         <div class="container header-content">
 
-            <!-- LOGO -->
             <div class="logo">
-                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
-                    <span class="logo-text">
-                alumniipbpedia
+                <img src="../uploads/Asset/logo1.png" alt="Logo Dashboard" class="logo-img">
+                <span class="logo-text">
+                    SIJA (Sistem Informasi Jejak Alumni)
                 </span>
-
             </div>
 
-            <!-- NAVBAR -->
             <nav class="main-nav">
 
                 <ul>
@@ -79,17 +82,6 @@ $queryTerbaru = $controller->index(
                             </a>
                         </li>
 
-                        <li>
-                            <a
-                                href="logout.php"
-                                style="
-                                    color:#ff4d4d;
-                                    font-weight:bold;
-                                ">
-                                LOGOUT
-                            </a>
-                        </li>
-
                     <?php else: ?>
 
                         <li>
@@ -104,7 +96,6 @@ $queryTerbaru = $controller->index(
 
             </nav>
 
-            <!-- SEARCH -->
             <form class="header-search" method="GET">
 
                 <input
@@ -123,12 +114,10 @@ $queryTerbaru = $controller->index(
 
     </header>
 
-    <!-- CONTENT -->
     <main class="container">
 
         <div class="content-layout">
 
-            <!-- SIDEBAR FILTER -->
             <aside class="filter-sidebar">
 
                 <h3>FILTER</h3>
@@ -152,6 +141,7 @@ $queryTerbaru = $controller->index(
                         value="<?= htmlspecialchars($angkatan); ?>"
                         placeholder="Contoh: 2020"
                         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
+
                     <label>Jurusan</label>
                     <select name="jurusan">
                         <option value="">Semua</option>
@@ -174,6 +164,7 @@ $queryTerbaru = $controller->index(
                         <option value="Administrasi Bisnis" <?php if ($jurusan == 'Administrasi Bisnis') echo 'selected'; ?>>Administrasi Bisnis</option>
                         <option value="Administrasi Publik" <?php if ($jurusan == 'Administrasi Publik') echo 'selected'; ?>>Administrasi Publik</option>
                     </select>
+
                     <label>Fakultas</label>
                     <select name="fakultas">
                         <option value="">Semua</option>
@@ -193,7 +184,6 @@ $queryTerbaru = $controller->index(
 
             </aside>
 
-            <!-- CONTENT KANAN -->
             <div class="content-main">
 
                 <section class="section-terbaru">
@@ -206,39 +196,16 @@ $queryTerbaru = $controller->index(
 
                         <?php if (mysqli_num_rows($queryTerbaru) > 0): ?>
 
-                            <?php while (
-                                $baru = mysqli_fetch_assoc($queryTerbaru)
-                            ): ?>
+                            <?php while ($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
 
-                                <a
-                                    href="detail.php?id=<?php echo $baru['user_id']; ?>"
-                                    style="
-                    text-decoration:none;
-                    color:inherit;
-                    display:block;
-                ">
-
+                                <a href="detail.php?id=<?php echo $baru['user_id']; ?>" style="text-decoration:none; color:inherit; display:block;">
                                     <div class="card-alumni">
-
-                                        <img
-                                            src="../<?php echo $baru['foto']; ?>"
-                                            alt="<?php echo $baru['nama']; ?>"
-                                            loading="lazy">
-
-                                        <h3>
-                                            <?php echo $baru['nama']; ?>
-                                        </h3>
-
+                                        <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
+                                        <h3><?php echo $baru['nama']; ?></h3>
                                         <p class="meta small-meta">
-
-                                            <?php echo $baru['tahun_kelulusan']; ?> |
-
-                                            <?php echo $baru['pekerjaan']; ?>
-
+                                            <?php echo $baru['tahun_kelulusan']; ?> | <?php echo $baru['pekerjaan']; ?>
                                         </p>
-
                                     </div>
-
                                 </a>
 
                             <?php endwhile; ?>
@@ -257,6 +224,36 @@ $queryTerbaru = $controller->index(
 
                     </div>
 
+                    <?php if ($total_pages > 1): ?>
+                        <div class="pagination">
+                            <?php
+                            // Menyimpan parameter filter yang sedang aktif agar tidak hilang saat pindah halaman
+                            $queryParams = $_GET;
+                            ?>
+
+                            <?php if ($current_page > 1):
+                                $queryParams['page'] = $current_page - 1;
+                                $prevLink = '?' . http_build_query($queryParams);
+                            ?>
+                                <a href="<?= $prevLink ?>" class="page-btn">&laquo; Prev</a>
+                            <?php endif; ?>
+
+                            <?php for ($i = 1; $i <= $total_pages; $i++):
+                                $queryParams['page'] = $i;
+                                $pageLink = '?' . http_build_query($queryParams);
+                                $activeClass = ($i == $current_page) ? 'active' : '';
+                            ?>
+                                <a href="<?= $pageLink ?>" class="page-btn <?= $activeClass ?>"><?= $i ?></a>
+                            <?php endfor; ?>
+
+                            <?php if ($current_page < $total_pages):
+                                $queryParams['page'] = $current_page + 1;
+                                $nextLink = '?' . http_build_query($queryParams);
+                            ?>
+                                <a href="<?= $nextLink ?>" class="page-btn">Next &raquo;</a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </section>
 
             </div>

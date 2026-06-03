@@ -13,7 +13,7 @@
     <div class="login-container" style="margin: 40px 0;">
         <div class="login-header">
             <!-- Menyamakan jalur logo dengan halaman login -->
-            <img src="../uploads/logo1.png" alt="Logo UPN" class="logo-img">
+            <img src="../uploads/Asset/logo1.png" alt="Logo UPN" class="logo-img">
             <h2>Daftar Akun Baru</h2>
             <p>Isi data di bawah ini untuk membuat akun</p>
         </div>

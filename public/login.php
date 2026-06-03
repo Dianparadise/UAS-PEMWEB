@@ -10,8 +10,13 @@
 
 <body class="login-body">
     <div class="login-container">
+
+        <a href="index.php" class="btn-back-icon" title="Kembali ke Beranda">
+            <img src="../uploads/Asset/icon-back.png" alt="Kembali">
+        </a>
+
         <div class="login-header">
-            <img src="../uploads/logo1.png" alt="Logo UPN" class="logo-img">
+            <img src="../uploads/Asset/logo1.png" alt="Logo UPN" class="logo-img">
             <h2>Masuk ke Akun</h2>
             <p>Silakan login untuk update data alumni</p>
         </div>
@@ -35,13 +40,16 @@
             <div class="input-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Masukkan password..." required>
+
+                <div style="text-align: right; margin-top: 8px;">
+                    <a href="forgot_password.php" style="color: #2c5e38; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Lupa password?</a>
+                </div>
             </div>
 
             <button type="submit" class="btn-login">Masuk</button>
 
             <div class="login-footer">
                 <p>Belum punya akun? <a href="register.php">Daftar sekarang</a></p>
-                <p><a href="index.php">← Kembali ke Beranda</a></p>
             </div>
         </form>
     </div>

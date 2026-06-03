@@ -39,8 +39,8 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
-                    <span class="logo-text">alumniipbpedia</span>
+                <img src="../uploads/Asset/logo1.png" alt="Logo Dashboard" class="logo-img">
+                <span class="logo-text">SIJA (Sistem Informasi Jejak Alumni)</span>
             </div>
             <nav class="main-nav">
                 <ul>

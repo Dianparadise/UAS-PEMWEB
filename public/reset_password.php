@@ -12,15 +12,20 @@ if (!isset($_SESSION['reset_email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password - Alumni IPB Pedia</title>
+    <title>Reset Password - SIJA</title>
     <link rel="stylesheet" href="../asset/css/style.css">
 </head>
 
 <body class="login-body">
 
     <div class="login-container">
+
+        <a href="forgot_password.php" class="btn-back-icon" title="Kembali">
+            <img src="../uploads/Asset/icon-back.png" alt="Kembali">
+        </a>
+
         <div class="login-header">
-            <img src="../asset/img/logo.png" alt="Logo" class="logo-img">
+            <img src="../uploads/Asset/logo1.png" alt="Logo UPN" class="logo-img">
             <h2>Password Baru</h2>
             <p>Silakan masukkan password baru untuk akun:<br><strong><?= $_SESSION['reset_email']; ?></strong></p>
         </div>

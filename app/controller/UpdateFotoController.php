@@ -48,10 +48,12 @@ if (isset($_FILES['foto_profil']) && $_FILES['foto_profil']['error'] == 0) {
 
     // Buat nama berkas acak agar tidak tertukar dengan foto orang lain
     $nama_baru = 'profil_' . $alumni_id . '_' . uniqid() . '.' . $jenis_berkas;
-    $tujuan_simpan = '../../uploads/' . $nama_baru;
+
+    // === JALUR PENYIMPANAN BARU (MASUK KE FOLDER Profil) ===
+    $tujuan_simpan = '../../uploads/Profil/' . $nama_baru;
 
     // Alamat yang akan disimpan ke dalam basis data
-    $alamat_basis_data = 'uploads/' . $nama_baru;
+    $alamat_basis_data = 'uploads/Profil/' . $nama_baru;
 
     // Pindahkan berkas dan perbarui basis data
     if (move_uploaded_file($lokasi_sementara, $tujuan_simpan)) {

@@ -48,7 +48,7 @@ if (!$alumniDetail) {
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../uploads/logo1.png" alt="Logo Dashboard" class="logo-img"
+                <img src="../uploads/Asset/logo1.png" alt="Logo Dashboard" class="logo-img"
                     <span class="logo-text">alumniipbpedia</span>
             </div>
             <nav class="main-nav">
@@ -109,7 +109,7 @@ if (!$alumniDetail) {
 
                 <hr style="border: 1px solid #eee; margin-bottom: 20px;">
 
-                <a href="index.php" class="btn-kembali">&larr; Kembali ke Beranda</a>
+                <a href="index.php" class="btn-kembali">&larr;Kembali ke Beranda</a>
             </div>
     </main>
 

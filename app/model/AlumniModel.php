@@ -20,36 +20,73 @@ class AlumniProfileModel
         return mysqli_fetch_assoc($query);
     }
 }
+
 class AlumniHomeModel
 {
-
-    public static function getTerbaru()
+    // 1. Menghitung total data untuk keperluan halaman (Pagination)
+    public static function getTotalRows($search, $tahun, $angkatan, $jurusan, $fakultas)
     {
-
         global $conn;
+        $sql = "SELECT COUNT(*) as total FROM alumni_profiles 
+                JOIN users ON alumni_profiles.user_id = users.id WHERE 1=1 ";
 
-        $query = mysqli_query($conn, "
-            SELECT 
-                alumni_profiles.*,
-                users.nama
-            FROM alumni_profiles
-            JOIN users 
-                ON alumni_profiles.user_id = users.id
-            ORDER BY alumni_profiles.tahun_kelulusan DESC
-            LIMIT 15
-        ");
+        if (!empty($search)) {
+            $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";
+        }
+        if (!empty($tahun)) {
+            $sql .= " AND alumni_profiles.tahun_kelulusan = '$tahun'";
+        }
+        if (!empty($angkatan)) {
+            $sql .= " AND alumni_profiles.angkatan = '$angkatan'";
+        }
+        if (!empty($jurusan)) {
+            $sql .= " AND alumni_profiles.jurusan = '$jurusan'";
+        }
+        if (!empty($fakultas)) {
+            $sql .= " AND alumni_profiles.fakultas = '$fakultas'";
+        }
 
-        return $query;
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row['total'];
     }
-    // Tambahkan fungsi ini di bawah fungsi getTerbaru()
+
+    // 2. Fungsi Super (Gabungan getTerbaru, search, filter, dan Pagination)
+    public static function getDataPaginated($search, $tahun, $angkatan, $jurusan, $fakultas, $limit, $offset)
+    {
+        global $conn;
+        $sql = "SELECT alumni_profiles.*, users.nama FROM alumni_profiles 
+                JOIN users ON alumni_profiles.user_id = users.id WHERE 1=1 ";
+
+        if (!empty($search)) {
+            $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";
+        }
+        if (!empty($tahun)) {
+            $sql .= " AND alumni_profiles.tahun_kelulusan = '$tahun'";
+        }
+        if (!empty($angkatan)) {
+            $sql .= " AND alumni_profiles.angkatan = '$angkatan'";
+        }
+        if (!empty($jurusan)) {
+            $sql .= " AND alumni_profiles.jurusan = '$jurusan'";
+        }
+        if (!empty($fakultas)) {
+            $sql .= " AND alumni_profiles.fakultas = '$fakultas'";
+        }
+
+        // Urutkan dari yang terbaru, lalu potong datanya (LIMIT)
+        $sql .= " ORDER BY alumni_profiles.tahun_kelulusan DESC, alumni_profiles.created_at DESC ";
+        $sql .= " LIMIT $limit OFFSET $offset";
+
+        return mysqli_query($conn, $sql);
+    }
+
+    // 3. Fungsi Detail (Tetap seperti aslimu)
     public static function getDetail($user_id)
     {
         global $conn;
-
-        // Mencegah SQL Injection
         $user_id = mysqli_real_escape_string($conn, $user_id);
 
-        // Pastikan format komanya pas seperti di bawah ini
         $query = mysqli_query($conn, "
             SELECT 
                 alumni_profiles.*,
@@ -62,94 +99,5 @@ class AlumniHomeModel
         ");
 
         return mysqli_fetch_assoc($query);
-    }
-    public static function search($search)
-    {
-
-        global $conn;
-
-        $sql = "
-        SELECT 
-            alumni_profiles.*,
-            users.nama
-        FROM alumni_profiles
-        JOIN users
-            ON alumni_profiles.user_id = users.id
-        WHERE 
-            users.nama LIKE '%$search%'
-            OR alumni_profiles.pekerjaan LIKE '%$search%'
-        ORDER BY alumni_profiles.created_at DESC
-    ";
-
-        return mysqli_query($conn, $sql);
-    }
-    public static function filter(
-        $search,
-        $tahun,
-        $angkatan,
-        $jurusan,
-        $fakultas
-    ) {
-
-        global $conn;
-
-        $sql = "
-        SELECT 
-            alumni_profiles.*,
-            users.nama
-        FROM alumni_profiles
-        JOIN users
-            ON alumni_profiles.user_id = users.id
-        WHERE 1=1
-    ";
-
-        // SEARCH
-        if (!empty($search)) {
-
-            $sql .= "
-            AND (
-                users.nama LIKE '%$search%'
-                OR alumni_profiles.pekerjaan LIKE '%$search%'
-            )
-        ";
-        }
-
-        // TAHUN
-        if (!empty($tahun)) {
-
-            $sql .= "
-            AND alumni_profiles.tahun_kelulusan = '$tahun'
-        ";
-        }
-
-        // ANGKATAN
-        if (!empty($angkatan)) {
-
-            $sql .= "
-            AND alumni_profiles.angkatan = '$angkatan'
-        ";
-        }
-
-        // JURUSAN
-        if (!empty($jurusan)) {
-
-            $sql .= "
-            AND alumni_profiles.jurusan = '$jurusan'
-        ";
-        }
-
-        // FAKULTAS
-        if (!empty($fakultas)) {
-
-            $sql .= "
-            AND alumni_profiles.fakultas = '$fakultas'
-        ";
-        }
-
-        $sql .= "
-        ORDER BY alumni_profiles.created_at DESC
-    ";
-
-        return mysqli_query($conn, $sql);
     }
 }

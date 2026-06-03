@@ -18,7 +18,6 @@ if ($query_update) {
     // Bersihkan session reset agar tidak disalahgunakan lagi
     unset($_SESSION['reset_email']);
 
-    // Tampilkan notifikasi sukses menggunakan javascript, lalu oper ke login
     echo "<script>
             alert('Password berhasil diperbarui! Silakan login menggunakan password baru Anda.');
             window.location='../../public/login.php';

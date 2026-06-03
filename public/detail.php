@@ -48,8 +48,10 @@ if (!$alumniDetail) {
     <header class="main-header">
         <div class="container header-content">
             <div class="logo">
-                <img src="../uploads/Asset/logo1.png" alt="Logo Dashboard" class="logo-img"
-                    <span class="logo-text">alumniipbpedia</span>
+                <img src="../uploads/Asset/logo1.png" alt="Logo Dashboard" class="logo-img" >
+                <span class="logo-text">
+                SIJA (Sistem Informasi Jejak Alumni)
+                </span>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -69,7 +71,8 @@ if (!$alumniDetail) {
     <main class="container">
         <div class="detail-wrapper">
             <div class="detail-foto">
-                <img src="../<?= htmlspecialchars($alumniDetail['foto'] ?? 'asset/img/default-avatar.png'); ?>" alt="<?= htmlspecialchars($alumniDetail['nama']); ?>">
+                <img src="../<?= htmlspecialchars($alumniDetail['foto'] ?? 'asset/img/default-avatar.png'); ?>"
+                    alt="<?= htmlspecialchars($alumniDetail['nama']); ?>">
             </div>
 
             <div class="detail-info">
@@ -82,15 +85,18 @@ if (!$alumniDetail) {
                 <p></p><strong>Fakultas :</strong> <?= htmlspecialchars($alumniDetail['fakultas'] ?? '-'); ?></p>
                 <p><strong>Jurusan :</strong> <?= htmlspecialchars($alumniDetail['jurusan'] ?? '-'); ?></p>
                 <p><strong>Angkatan :</strong> <?= htmlspecialchars($alumniDetail['angkatan'] ?? '-'); ?></p>
-                <p><strong>Tahun Kelulusan :</strong> <?= htmlspecialchars($alumniDetail['tahun_kelulusan'] ?? '-'); ?></p>
+                <p><strong>Tahun Kelulusan :</strong> <?= htmlspecialchars($alumniDetail['tahun_kelulusan'] ?? '-'); ?>
+                </p>
                 <p><strong>Pekerjaan Saat Ini :</strong> <?= htmlspecialchars($alumniDetail['pekerjaan'] ?? '-'); ?></p>
-                <p><strong>Perusahaan / Instansi :</strong> <?= htmlspecialchars($alumniDetail['perusahaan'] ?? '-'); ?></p>
+                <p><strong>Perusahaan / Instansi :</strong> <?= htmlspecialchars($alumniDetail['perusahaan'] ?? '-'); ?>
+                </p>
 
                 <p><strong>Email Resmi :</strong> <?= htmlspecialchars($alumniDetail['email'] ?? '-'); ?></p>
 
                 <?php if (!empty($alumniDetail['linkedin'])): ?>
                     <p><strong>LinkedIn :</strong>
-                        <a href="<?= htmlspecialchars($alumniDetail['linkedin']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
+                        <a href="<?= htmlspecialchars($alumniDetail['linkedin']); ?>" target="_blank"
+                            style="color: #2c5e38; text-decoration: none; font-weight: 500;">
                             <?= htmlspecialchars($alumniDetail['linkedin']); ?>
                         </a>
                     </p>
@@ -98,7 +104,8 @@ if (!$alumniDetail) {
 
                 <?php if (!empty($alumniDetail['instagram'])): ?>
                     <p><strong>Instagram :</strong>
-                        <a href="<?= htmlspecialchars($alumniDetail['instagram']); ?>" target="_blank" style="color: #2c5e38; text-decoration: none; font-weight: 500;">
+                        <a href="<?= htmlspecialchars($alumniDetail['instagram']); ?>" target="_blank"
+                            style="color: #2c5e38; text-decoration: none; font-weight: 500;">
                             <?= htmlspecialchars($alumniDetail['instagram']); ?>
                         </a>
                     </p>

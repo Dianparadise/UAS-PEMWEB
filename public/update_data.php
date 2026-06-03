@@ -22,6 +22,9 @@ $queryRiwayat = mysqli_query($conn, "SELECT * FROM update_requests WHERE alumni_
 // Ambil pengajuan terakhir untuk status paling atas
 $queryStatus = mysqli_query($conn, "SELECT * FROM update_requests WHERE alumni_id='$profil_id' ORDER BY id DESC LIMIT 1");
 $status_terakhir = mysqli_fetch_assoc($queryStatus);
+
+// Amankan pengecekan status kelulusan dari perbedaan kapital atau spasi
+$status_kelulusan = isset($data_profil['status_kelulusan']) ? strtolower(trim($data_profil['status_kelulusan'])) : '';
 ?>
 
 <!DOCTYPE html>
@@ -61,26 +64,57 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
         <div class="update-layout-grid">
 
             <div class="left-column">
-                <?php if ($data_user['role'] == 'mahasiswa'): ?>
-                    <div class="card-box" style="border-left: 4px solid #28a745; background-color: #f8fff9;">
-                        <h3 class="form-title" style="color: #155724; margin-bottom: 5px;">🎓 Sudah Lulus?</h3>
-                        <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">Selamat! Silakan perbarui statusmu
-                            menjadi Alumni dengan mengisi tahun kelulusan di bawah ini.</p>
 
-                        <form action="../app/controller/UpdateStatus.php" method="POST"
-                            style="display: flex; gap: 10px; align-items: flex-end;">
-                            <div class="form-group" style="flex: 1; margin: 0;">
-                                <label style="font-weight: bold; font-size: 0.85rem; color: #333;">Tahun Kelulusan</label>
-                                <input type="number" name="tahun_kelulusan" placeholder="Contoh: 2026" required
-                                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline: none;">
+                <?php if ($data_user['role'] == 'mahasiswa'): ?>
+                    <div class="card-box claim-box">
+                        <h3 class="claim-title">
+                            <img src="../uploads/Asset/graduation.png" alt="Icon Lulus" class="claim-icon-title">
+                            Sudah Lulus?
+                        </h3>
+
+                        <?php if ($status_kelulusan == 'pending'): ?>
+                            <div class="alert-pending">
+                                <img src="../uploads/Asset/pending.png" alt="Icon Pending" class="alert-icon">
+                                <div class="alert-content">
+                                    <strong>Status: Menunggu Validasi Admin</strong>
+                                    <p>Pengajuan klaim alumni Anda sudah berhasil dikirim. Mohon tunggu beberapa saat hingga
+                                        Admin memverifikasi berkas berkas Ijazah/SKL Anda.</p>
+                                </div>
                             </div>
-                            <button type="submit"
-                                style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Update
-                                Jadi Alumni</button>
-                        </form>
+
+                        <?php else: ?>
+                            <?php if ($status_kelulusan == 'ditolak'): ?>
+                                <div class="alert-rejected">
+                                    <img src="../uploads/Asset/rejected.png" alt="Icon Ditolak" class="alert-icon">
+                                    <span>Pengajuan klaim kelulusan Anda sebelumnya ditolak oleh admin. Silakan unggah kembali
+                                        berkas ijazah/SKL yang sah dan jelas.</span>
+                                </div>
+                            <?php endif; ?>
+
+                            <p class="claim-text">Selamat! Silakan perbarui statusmu menjadi Alumni dengan mengisi tahun
+                                kelulusan serta melampirkan bukti kelulusan di bawah ini.</p>
+
+                            <form action="../app/controller/UpdateStatus.php" method="POST" enctype="multipart/form-data"
+                                class="claim-form">
+                                <div class="claim-form-row">
+                                    <div class="claim-form-group type-year">
+                                        <label class="claim-label">Tahun Kelulusan</label>
+                                        <input type="number" name="tahun_kelulusan" placeholder="Contoh: 2026" required
+                                            class="claim-input">
+                                    </div>
+                                    <div class="claim-form-group type-file">
+                                        <label class="claim-label">Upload Ijazah / SKL (PDF/JPG/PNG)</label>
+                                        <input type="file" name="bukti_kelulusan" accept=".pdf, .jpg, .jpeg, .png" required
+                                            class="claim-input-file">
+                                    </div>
+                                </div>
+                                <button type="submit" class="claim-btn">
+                                    Kirim Berkas & Klaim Status Alumni
+                                </button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
-
                 <div class="card-box">
                     <div class="stepper">
                         <div class="step active"><span class="step-num">1</span> Isi Data</div>
@@ -89,7 +123,6 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
                         <div class="step-line"></div>
                         <div class="step"><span class="step-num">3</span> Tunggu Validasi</div>
                     </div>
-
 
                     <h3 class="form-title">Form Perubahan Data Alumni</h3>
 
@@ -165,7 +198,9 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
                     <?php if ($status_terakhir): ?>
                         <div class="status-detail">
                             <p class="meta-label">Tanggal Pengajuan</p>
-                            <p class="meta-value"><?= date('d F Y H:i', strtotime($status_terakhir['created_at'])); ?></p>
+                            <p class="meta-value">
+                                <?= date('d F Y H:i', strtotime($status_terakhir['created_at'])); ?>
+                            </p>
 
                             <p class="meta-label mt-3">Catatan Admin</p>
                             <p class="meta-note">
@@ -187,12 +222,14 @@ $status_terakhir = mysqli_fetch_assoc($queryStatus);
                                         <span class="indicator <?= $riwayat['status']; ?>"></span>
                                         <div>
                                             <p class="history-title">Update Data Profil</p>
-                                            <p class="history-date"><?= date('d M Y H:i', strtotime($riwayat['created_at'])); ?>
+                                            <p class="history-date">
+                                                <?= date('d M Y H:i', strtotime($riwayat['created_at'])); ?>
                                             </p>
                                         </div>
                                     </div>
-                                    <span
-                                        class="history-status-text <?= $riwayat['status']; ?>"><?= strtoupper($riwayat['status']); ?></span>
+                                    <span class="history-status-text <?= $riwayat['status']; ?>">
+                                        <?= strtoupper($riwayat['status']); ?>
+                                    </span>
                                 </div>
                             <?php endwhile; ?>
                         <?php else: ?>

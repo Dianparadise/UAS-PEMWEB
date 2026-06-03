@@ -7,9 +7,14 @@ if (!isset($_SESSION['status']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
+// Query ambil data utama alumni
 $query = mysqli_query($conn, "SELECT ap.*, u.nama, u.email FROM alumni_profiles ap 
                               JOIN users u ON ap.user_id = u.id ORDER BY ap.id DESC");
-$count_pending = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM update_requests WHERE status='pending'"))['total'];
+
+// Hitung ulang komponen pending gabungan agar angka sidebar tidak berubah-ubah
+$count_pending_kerja = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM update_requests WHERE status='pending'"))['total'];
+$count_pending_lulus = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM alumni_profiles WHERE status_kelulusan='pending'"))['total'];
+$total_notif = $count_pending_kerja + $count_pending_lulus;
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -25,14 +30,14 @@ $count_pending = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as tota
     <div class="admin-sidebar">
         <h2>Panel Admin</h2>
         <a href="admin_dashboard.php">Dashboard</a>
-        <a href="admin_validasi.php">Validasi Data (<?= $count_pending ?>)</a>
+        <a href="admin_validasi.php">Validasi Data (<?= $total_notif ?>)</a>
         <a href="admin_alumni_crud.php" class="active">Kelola Data Alumni</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
 
     <div class="admin-main-content">
         <div class="admin-header">
-            <h1>Master Data Kelola Alumni (CRUD)</h1>
+            <h1>Data Kelola Alumni</h1>
             <p>Manajemen penuh modifikasi, pembaruan angkatan, dan penghapusan data akun alumni.</p>
         </div>
 

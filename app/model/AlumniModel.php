@@ -4,11 +4,9 @@ require_once __DIR__ . '/../../config/koneksi.php';
 
 class AlumniProfileModel
 {
-
     // Ambil biodata berdasarkan user_id
     public static function getByUserId($user_id)
     {
-
         global $conn;
 
         $query = mysqli_query(
@@ -27,8 +25,10 @@ class AlumniHomeModel
     public static function getTotalRows($search, $tahun, $angkatan, $jurusan, $fakultas)
     {
         global $conn;
+        // MENGUBAH 'WHERE 1=1' MENJADI FILTER STATUS KELULUSAN YANG DISETUJUI
         $sql = "SELECT COUNT(*) as total FROM alumni_profiles 
-                JOIN users ON alumni_profiles.user_id = users.id WHERE 1=1 ";
+                JOIN users ON alumni_profiles.user_id = users.id 
+                WHERE alumni_profiles.status_kelulusan = 'disetujui' ";
 
         if (!empty($search)) {
             $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";
@@ -55,8 +55,10 @@ class AlumniHomeModel
     public static function getDataPaginated($search, $tahun, $angkatan, $jurusan, $fakultas, $limit, $offset)
     {
         global $conn;
+        // MENGUBAH 'WHERE 1=1' MENJADI FILTER STATUS KELULUSAN YANG DISETUJUI
         $sql = "SELECT alumni_profiles.*, users.nama FROM alumni_profiles 
-                JOIN users ON alumni_profiles.user_id = users.id WHERE 1=1 ";
+                JOIN users ON alumni_profiles.user_id = users.id 
+                WHERE alumni_profiles.status_kelulusan = 'disetujui' ";
 
         if (!empty($search)) {
             $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";

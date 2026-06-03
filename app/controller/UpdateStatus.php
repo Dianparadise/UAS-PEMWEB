@@ -16,13 +16,38 @@ $queryUser = mysqli_query($conn, "SELECT id FROM users WHERE email='$email'");
 $user = mysqli_fetch_assoc($queryUser);
 $user_id = $user['id'];
 
-// 2. Ubah role di tabel users dari 'mahasiswa' menjadi 'alumni'
-mysqli_query($conn, "UPDATE users SET role='alumni' WHERE id='$user_id'");
+// 2. Proses Upload Berkas Bukti Kelulusan (Ijazah / SKL)
+$bukti_kelulusan = "";
+if (isset($_FILES['bukti_kelulusan']) && $_FILES['bukti_kelulusan']['error'] == 0) {
+    $target_dir = "../../uploads/";
 
-// 3. Update tahun kelulusan di tabel alumni_profiles
-mysqli_query($conn, "UPDATE alumni_profiles SET tahun_kelulusan='$tahun_kelulusan' WHERE user_id='$user_id'");
+    // Buat folder uploads jika belum ada
+    if (!is_dir($target_dir)) {
+        mkdir($target_dir, 0777, true);
+    }
 
-// 4. Perbarui data sesi (session) agar navigasi dan hak akses langsung berubah tanpa perlu login ulang
-$_SESSION['role'] = 'alumni';
+    $filename = time() . "_" . basename($_FILES["bukti_kelulusan"]["name"]);
+    $target_file = $target_dir . $filename;
 
-echo "<script>alert('Selamat! Status Anda berhasil diperbarui menjadi Alumni.'); window.location='../../public/profil.php';</script>";
+    if (move_uploaded_file($_FILES["bukti_kelulusan"]["tmp_name"], $target_file)) {
+        $bukti_kelulusan = $filename;
+    }
+}
+
+// 3. JANGAN UBAH ROLE MENJADI ALUMNI DULU!
+// Kita simpan tahun kelulusan, berkas ijazah, dan set status_kelulusan menjadi 'pending'
+$query_update = "UPDATE alumni_profiles SET 
+                 tahun_kelulusan='$tahun_kelulusan', 
+                 angkatan='$tahun_kelulusan', 
+                 status_kelulusan='pending'";
+
+// Jika ada file yang diunggah, masukkan ke query
+if (!empty($bukti_kelulusan)) {
+    $query_update .= ", bukti_kelulusan='$bukti_kelulusan'";
+}
+
+$query_update .= " WHERE user_id='$user_id'";
+mysqli_query($conn, $query_update);
+
+echo "<script>alert('Pengajuan kelulusan Anda berhasil dikirim! Silakan tunggu validasi dan persetujuan dari Admin.'); window.location='../../public/profil.php';</script>";
+?>

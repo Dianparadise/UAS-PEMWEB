@@ -14,7 +14,7 @@ $tahun = $_GET['tahun'] ?? '';
 $angkatan = $_GET['angkatan'] ?? '';
 $jurusan = $_GET['jurusan'] ?? '';
 $fakultas = $_GET['fakultas'] ?? '';
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Tangkap nomor halaman
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1; // Tangkap nomor halaman
 
 // Panggil controller dan ekstrak array yang dikembalikan
 $result = $controller->index(
@@ -98,10 +98,7 @@ $current_page = $result['current_page'];
 
             <form class="header-search" method="GET">
 
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Cari nama / pekerjaan..."
+                <input type="text" name="search" placeholder="Cari nama / pekerjaan..."
                     value="<?= $_GET['search'] ?? ''; ?>">
 
                 <button type="submit">
@@ -127,18 +124,12 @@ $current_page = $result['current_page'];
                     <input type="hidden" name="search" value="<?= $_GET['search'] ?? ''; ?>">
 
                     <label>Tahun Kelulusan</label>
-                    <input
-                        type="number"
-                        name="tahun"
-                        value="<?= htmlspecialchars($tahun); ?>"
+                    <input type="number" name="tahun" value="<?= htmlspecialchars($tahun); ?>"
                         placeholder="Contoh: 2024"
                         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
 
                     <label>Angkatan</label>
-                    <input
-                        type="number"
-                        name="angkatan"
-                        value="<?= htmlspecialchars($angkatan); ?>"
+                    <input type="number" name="angkatan" value="<?= htmlspecialchars($angkatan); ?>"
                         placeholder="Contoh: 2020"
                         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
 
@@ -146,36 +137,71 @@ $current_page = $result['current_page'];
                     <select name="jurusan">
                         <option value="">Semua</option>
 
-                        <option value="Teknik Informatika" <?php if ($jurusan == 'Teknik Informatika') echo 'selected'; ?>>Teknik Informatika</option>
-                        <option value="Sistem Informasi" <?php if ($jurusan == 'Sistem Informasi') echo 'selected'; ?>>Sistem Informasi</option>
-                        <option value="Sains Data" <?php if ($jurusan == 'Sains Data') echo 'selected'; ?>>Sains Data</option>
-                        <option value="Bisnis Digital" <?php if ($jurusan == 'Bisnis Digital') echo 'selected'; ?>>Bisnis Digital</option>
+                        <option value="Teknik Informatika" <?php if ($jurusan == 'Teknik Informatika')
+                            echo 'selected'; ?>>Teknik Informatika</option>
+                        <option value="Sistem Informasi" <?php if ($jurusan == 'Sistem Informasi')
+                            echo 'selected'; ?>>
+                            Sistem Informasi</option>
+                        <option value="Sains Data" <?php if ($jurusan == 'Sains Data')
+                            echo 'selected'; ?>>Sains Data
+                        </option>
+                        <option value="Bisnis Digital" <?php if ($jurusan == 'Bisnis Digital')
+                            echo 'selected'; ?>>Bisnis
+                            Digital</option>
 
-                        <option value="Teknik Industri" <?php if ($jurusan == 'Teknik Industri') echo 'selected'; ?>>Teknik Industri</option>
-                        <option value="Teknik Sipil" <?php if ($jurusan == 'Teknik Sipil') echo 'selected'; ?>>Teknik Sipil</option>
-                        <option value="Teknik Lingkungan" <?php if ($jurusan == 'Teknik Lingkungan') echo 'selected'; ?>>Teknik Lingkungan</option>
-                        <option value="Teknik Kimia" <?php if ($jurusan == 'Teknik Kimia') echo 'selected'; ?>>Teknik Kimia</option>
-                        <option value="Teknologi Pangan" <?php if ($jurusan == 'Teknologi Pangan') echo 'selected'; ?>>Teknologi Pangan</option>
+                        <option value="Teknik Industri" <?php if ($jurusan == 'Teknik Industri')
+                            echo 'selected'; ?>>
+                            Teknik Industri</option>
+                        <option value="Teknik Sipil" <?php if ($jurusan == 'Teknik Sipil')
+                            echo 'selected'; ?>>Teknik
+                            Sipil</option>
+                        <option value="Teknik Lingkungan" <?php if ($jurusan == 'Teknik Lingkungan')
+                            echo 'selected'; ?>>
+                            Teknik Lingkungan</option>
+                        <option value="Teknik Kimia" <?php if ($jurusan == 'Teknik Kimia')
+                            echo 'selected'; ?>>Teknik
+                            Kimia</option>
+                        <option value="Teknologi Pangan" <?php if ($jurusan == 'Teknologi Pangan')
+                            echo 'selected'; ?>>
+                            Teknologi Pangan</option>
 
-                        <option value="Manajemen" <?php if ($jurusan == 'Manajemen') echo 'selected'; ?>>Manajemen</option>
-                        <option value="Akuntansi" <?php if ($jurusan == 'Akuntansi') echo 'selected'; ?>>Akuntansi</option>
-                        <option value="Ilmu Komunikasi" <?php if ($jurusan == 'Ilmu Komunikasi') echo 'selected'; ?>>Ilmu Komunikasi</option>
-                        <option value="Hubungan Internasional" <?php if ($jurusan == 'Hubungan Internasional') echo 'selected'; ?>>Hubungan Internasional</option>
-                        <option value="Administrasi Bisnis" <?php if ($jurusan == 'Administrasi Bisnis') echo 'selected'; ?>>Administrasi Bisnis</option>
-                        <option value="Administrasi Publik" <?php if ($jurusan == 'Administrasi Publik') echo 'selected'; ?>>Administrasi Publik</option>
+                        <option value="Manajemen" <?php if ($jurusan == 'Manajemen')
+                            echo 'selected'; ?>>Manajemen
+                        </option>
+                        <option value="Akuntansi" <?php if ($jurusan == 'Akuntansi')
+                            echo 'selected'; ?>>Akuntansi
+                        </option>
+                        <option value="Ilmu Komunikasi" <?php if ($jurusan == 'Ilmu Komunikasi')
+                            echo 'selected'; ?>>Ilmu
+                            Komunikasi</option>
+                        <option value="Hubungan Internasional" <?php if ($jurusan == 'Hubungan Internasional')
+                            echo 'selected'; ?>>Hubungan Internasional</option>
+                        <option value="Administrasi Bisnis" <?php if ($jurusan == 'Administrasi Bisnis')
+                            echo 'selected'; ?>>Administrasi Bisnis</option>
+                        <option value="Administrasi Publik" <?php if ($jurusan == 'Administrasi Publik')
+                            echo 'selected'; ?>>Administrasi Publik</option>
                     </select>
 
                     <label>Fakultas</label>
                     <select name="fakultas">
                         <option value="">Semua</option>
 
-                        <option value="Ilmu Komputer" <?php if ($fakultas == 'Ilmu Komputer') echo 'selected'; ?>>Ilmu Komputer</option>
-                        <option value="Teknik" <?php if ($fakultas == 'Teknik') echo 'selected'; ?>>Teknik</option>
-                        <option value="Ekonomi dan Bisnis" <?php if ($fakultas == 'Ekonomi dan Bisnis') echo 'selected'; ?>>Ekonomi dan Bisnis</option>
-                        <option value="Ilmu Sosial dan Ilmu Politik" <?php if ($fakultas == 'Ilmu Sosial dan Ilmu Politik') echo 'selected'; ?>>Ilmu Sosial dan Ilmu Politik</option>
-                        <option value="Pertanian" <?php if ($fakultas == 'Pertanian') echo 'selected'; ?>>Pertanian</option>
-                        <option value="Hukum" <?php if ($fakultas == 'Hukum') echo 'selected'; ?>>Hukum</option>
-                        <option value="Arsitektur dan Desain" <?php if ($fakultas == 'Arsitektur dan Desain') echo 'selected'; ?>>Arsitektur dan Desain</option>
+                        <option value="Ilmu Komputer" <?php if ($fakultas == 'Ilmu Komputer')
+                            echo 'selected'; ?>>Ilmu
+                            Komputer</option>
+                        <option value="Teknik" <?php if ($fakultas == 'Teknik')
+                            echo 'selected'; ?>>Teknik</option>
+                        <option value="Ekonomi dan Bisnis" <?php if ($fakultas == 'Ekonomi dan Bisnis')
+                            echo 'selected'; ?>>Ekonomi dan Bisnis</option>
+                        <option value="Ilmu Sosial dan Ilmu Politik" <?php if ($fakultas == 'Ilmu Sosial dan Ilmu Politik')
+                            echo 'selected'; ?>>Ilmu Sosial dan Ilmu Politik</option>
+                        <option value="Pertanian" <?php if ($fakultas == 'Pertanian')
+                            echo 'selected'; ?>>Pertanian
+                        </option>
+                        <option value="Hukum" <?php if ($fakultas == 'Hukum')
+                            echo 'selected'; ?>>Hukum</option>
+                        <option value="Arsitektur dan Desain" <?php if ($fakultas == 'Arsitektur dan Desain')
+                            echo 'selected'; ?>>Arsitektur dan Desain</option>
                     </select>
 
                     <button type="submit">Terapkan Filter</button>
@@ -198,9 +224,11 @@ $current_page = $result['current_page'];
 
                             <?php while ($baru = mysqli_fetch_assoc($queryTerbaru)): ?>
 
-                                <a href="detail.php?id=<?php echo $baru['user_id']; ?>" style="text-decoration:none; color:inherit; display:block;">
+                                <a href="detail.php?id=<?php echo $baru['user_id']; ?>"
+                                    style="text-decoration:none; color:inherit; display:block;">
                                     <div class="card-alumni">
-                                        <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>" loading="lazy">
+                                        <img src="../<?php echo $baru['foto']; ?>" alt="<?php echo $baru['nama']; ?>"
+                                            loading="lazy">
                                         <h3><?php echo $baru['nama']; ?></h3>
                                         <p class="meta small-meta">
                                             <?php echo $baru['tahun_kelulusan']; ?> | <?php echo $baru['pekerjaan']; ?>
@@ -212,10 +240,14 @@ $current_page = $result['current_page'];
 
                         <?php else: ?>
 
-                            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background-color: #f8f9fa; border-radius: 12px; border: 2px dashed #ddd;">
-                                <h3 style="color: #555; margin-bottom: 10px; font-size: 1.5rem;">🔍 Data Tidak Ditemukan</h3>
-                                <p style="color: #777; margin-bottom: 20px;">Maaf, tidak ada alumni yang sesuai dengan filter atau pencarian Anda.</p>
-                                <a href="index.php" style="display: inline-block; padding: 10px 20px; background-color: #2c5e38; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s;">
+                            <div
+                                style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background-color: #f8f9fa; border-radius: 12px; border: 2px dashed #ddd;">
+                                <h3 style="color: #555; margin-bottom: 10px; font-size: 1.5rem;">🔍 Data Tidak Ditemukan
+                                </h3>
+                                <p style="color: #777; margin-bottom: 20px;">Maaf, tidak ada alumni yang sesuai dengan
+                                    filter atau pencarian Anda.</p>
+                                <a href="index.php"
+                                    style="display: inline-block; padding: 10px 20px; background-color: #2c5e38; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s;">
                                     ↺ Reset Filter
                                 </a>
                             </div>
@@ -227,29 +259,54 @@ $current_page = $result['current_page'];
                     <?php if ($total_pages > 1): ?>
                         <div class="pagination">
                             <?php
-                            // Menyimpan parameter filter yang sedang aktif agar tidak hilang saat pindah halaman
+                            // Menyimpan parameter filter aktif agar tidak hilang saat pindah halaman
                             $queryParams = $_GET;
+                            $tampilkan_sekitar = 2; // Menentukan jumlah angka di kiri & kanan halaman aktif
                             ?>
 
                             <?php if ($current_page > 1):
                                 $queryParams['page'] = $current_page - 1;
                                 $prevLink = '?' . http_build_query($queryParams);
-                            ?>
+                                ?>
                                 <a href="<?= $prevLink ?>" class="page-btn">&laquo; Prev</a>
                             <?php endif; ?>
 
-                            <?php for ($i = 1; $i <= $total_pages; $i++):
+                            <?php if ($current_page > ($tampilkan_sekitar + 1)):
+                                $queryParams['page'] = 1;
+                                $firstLink = '?' . http_build_query($queryParams);
+                                ?>
+                                <a href="<?= $firstLink ?>" class="page-btn">1</a>
+                                <?php if ($current_page > ($tampilkan_sekitar + 2)): ?>
+                                    <span class="page-dots" style="padding: 8px 12px; color: #777;">...</span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php
+                            $mulai_dari = max(1, $current_page - $tampilkan_sekitar);
+                            $sampai_ke = min($total_pages, $current_page + $tampilkan_sekitar);
+
+                            for ($i = $mulai_dari; $i <= $sampai_ke; $i++):
                                 $queryParams['page'] = $i;
                                 $pageLink = '?' . http_build_query($queryParams);
                                 $activeClass = ($i == $current_page) ? 'active' : '';
-                            ?>
+                                ?>
                                 <a href="<?= $pageLink ?>" class="page-btn <?= $activeClass ?>"><?= $i ?></a>
                             <?php endfor; ?>
+
+                            <?php if ($current_page < ($total_pages - $tampilkan_sekitar)):
+                                $queryParams['page'] = $total_pages;
+                                $lastLink = '?' . http_build_query($queryParams);
+                                ?>
+                                <?php if ($current_page < ($total_pages - $tampilkan_sekitar - 1)): ?>
+                                    <span class="page-dots" style="padding: 8px 12px; color: #777;">...</span>
+                                <?php endif; ?>
+                                <a href="<?= $lastLink ?>" class="page-btn"><?= $total_pages ?></a>
+                            <?php endif; ?>
 
                             <?php if ($current_page < $total_pages):
                                 $queryParams['page'] = $current_page + 1;
                                 $nextLink = '?' . http_build_query($queryParams);
-                            ?>
+                                ?>
                                 <a href="<?= $nextLink ?>" class="page-btn">Next &raquo;</a>
                             <?php endif; ?>
                         </div>

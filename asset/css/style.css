@@ -189,6 +189,7 @@ body {
 
     gap: 30px;
 }
+
 /* =========================================
    LAYOUT CONTENT + FILTER SIDEBAR
 ========================================= */
@@ -202,6 +203,7 @@ body {
     align-items: flex-start;
     margin-top: 40px;
 }
+
 .filter-sidebar {
 
     width: 260px;
@@ -214,13 +216,15 @@ body {
 
     border-radius: 12px;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
     flex-shrink: 0;
     position: sticky;
     top: 20px;
-    max-height: 90vh; /* Membatasi tinggi maksimal sejauh 90% dari layar */
-    overflow-y: auto; /* Memunculkan scrollbar otomatis jika isinya kepanjangan */
+    max-height: 90vh;
+    /* Membatasi tinggi maksimal sejauh 90% dari layar */
+    overflow-y: auto;
+    /* Memunculkan scrollbar otomatis jika isinya kepanjangan */
 }
 
 .content-main {
@@ -244,7 +248,7 @@ body {
 
     border-radius: 14px;
 
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 
     border: 1px solid #e5e5e5;
 
@@ -310,7 +314,7 @@ body {
 
     background: white;
 
-    box-shadow: 0 0 0 3px rgba(45,90,61,0.15);
+    box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.15);
 }
 
 /* BUTTON */
@@ -481,9 +485,9 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    
+
     /* Kode untuk memasang foto background dengan overlay hijau gelap transparan */
-background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)), url('../../uploads/Asset/bgLogin.png');
+    background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)), url('../../uploads/Asset/bgLogin.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -493,7 +497,8 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
     background-color: white;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Bayangan ditebalkan sedikit agar kotak lebih "pop out" */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Bayangan ditebalkan sedikit agar kotak lebih "pop out" */
     width: 100%;
     max-width: 400px;
     position: relative;
@@ -508,15 +513,19 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; /* Membuat latar belakang ikon menjadi bulat */
-    background-color: #f1f1f1; /* Warna abu-abu terang */
+    border-radius: 50%;
+    /* Membuat latar belakang ikon menjadi bulat */
+    background-color: #f1f1f1;
+    /* Warna abu-abu terang */
     transition: 0.3s;
     text-decoration: none;
 }
 
 .btn-back-icon:hover {
-    background-color: #e2e2e2; /* Sedikit lebih gelap saat disorot */
-    transform: scale(1.05);    /* Efek membesar sedikit */
+    background-color: #e2e2e2;
+    /* Sedikit lebih gelap saat disorot */
+    transform: scale(1.05);
+    /* Efek membesar sedikit */
 }
 
 .btn-back-icon img {
@@ -604,7 +613,7 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 }
 
 .login-footer a {
-    color: #2d5a3b; 
+    color: #2d5a3b;
     text-decoration: none;
     font-weight: bold;
 }
@@ -612,6 +621,7 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 .login-footer a:hover {
     text-decoration: underline;
 }
+
 /* =========================================
    HALAMAN PROFIL
 ========================================= */
@@ -809,8 +819,10 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 
 .menu-item {
     display: flex;
-    align-items: center; /* Kunci agar ikon dan teks rata tengah secara vertikal */
-    gap: 12px;           /* Jarak antara ikon gambar dan teks */
+    align-items: center;
+    /* Kunci agar ikon dan teks rata tengah secara vertikal */
+    gap: 12px;
+    /* Jarak antara ikon gambar dan teks */
     padding: 12px 15px;
     color: #555;
     text-decoration: none;
@@ -821,16 +833,22 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 
 .menu-item:hover,
 .menu-item.active {
-    background-color: #e8f5e9; /* Latar belakang hijau muda */
-    color: #2c5e38;            /* Teks warna hijau tua */
+    background-color: #e8f5e9;
+    /* Latar belakang hijau muda */
+    color: #2c5e38;
+    /* Teks warna hijau tua */
 }
 
 /* Mengatur ukuran gambar ikon yang diambil dari folder uploads */
 .menu-icon {
-    width: 22px;         /* Lebar ikon mutlak */
-    height: 22px;        /* Tinggi ikon mutlak */
-    object-fit: contain; /* Memastikan gambar ikon tidak gepeng */
-    flex-shrink: 0;      /* Memastikan ikon tidak menyusut tertekan teks */
+    width: 22px;
+    /* Lebar ikon mutlak */
+    height: 22px;
+    /* Tinggi ikon mutlak */
+    object-fit: contain;
+    /* Memastikan gambar ikon tidak gepeng */
+    flex-shrink: 0;
+    /* Memastikan ikon tidak menyusut tertekan teks */
 }
 
 /* Khusus tombol logout agar tetap merah */
@@ -902,7 +920,8 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
     background-color: #f8f9fa;
     padding: 10px 12px;
     border-radius: 5px;
-    border-left: 3px solid #2c5e38; /* Garis pinggir berubah jadi hijau */
+    border-left: 3px solid #2c5e38;
+    /* Garis pinggir berubah jadi hijau */
     font-weight: 500;
 }
 
@@ -989,7 +1008,8 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 }
 
 .btn-save-password {
-    background-color: #2c5e38; /* Warna hijau utama */
+    background-color: #2c5e38;
+    /* Warna hijau utama */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -1001,7 +1021,7 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 
 /* Tambahkan efek ini di bawahnya agar tombol menghijau gelap saat disorot */
 .btn-save-password:hover {
-    background-color: #1f4227; 
+    background-color: #1f4227;
 }
 
 /* RESPONSIVE DASHBOARD */
@@ -1190,13 +1210,15 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 }
 
 .btn-submit:hover {
-    background-color: #1f4227; 
+    background-color: #1f4227;
 }
 
 /* Guide Box */
 .guide-box {
-    background-color: #e8f5e9 !important; /* KUNCI: Mengubah latar dari biru muda ke hijau muda sakral */
-    border-left: 4px solid #2c5e38 !important; /* Garis pinggir hijau tua */
+    background-color: #e8f5e9 !important;
+    /* KUNCI: Mengubah latar dari biru muda ke hijau muda sakral */
+    border-left: 4px solid #2c5e38 !important;
+    /* Garis pinggir hijau tua */
 }
 
 .guide-box h4 {
@@ -1204,7 +1226,7 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
     margin-bottom: 10px;
 }
 
-.guide-box p {  
+.guide-box p {
     font-size: 0.9rem;
     color: #555;
 }
@@ -1557,18 +1579,18 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 /* ==========================================================================
    STYLE KHUSUS HALAMAN detail (PANEL MANAGEMENT)
    ========================================================================== */
-        .detail-wrapper {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            margin-top: 40px;
-            display: flex;
-            gap: 40px;
-        }
+.detail-wrapper {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
 
 .detail-foto {
-    flex-shrink: 0 !important; 
+    flex-shrink: 0 !important;
     width: 350px !important;
 }
 
@@ -1576,36 +1598,38 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
     width: 100% !important;
     height: 400px !important;
     border-radius: 8px !important;
-    object-fit: cover !important; 
+    object-fit: cover !important;
 }
-        .detail-info h2 {
-            margin-top: 0;
-            color: #2c5e38;
-            /* Warna hijau khas UI kamu */
-            font-size: 28px;
-        }
 
-        .detail-info p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            color: #555;
-        }
+.detail-info h2 {
+    margin-top: 0;
+    color: #2c5e38;
+    /* Warna hijau khas UI kamu */
+    font-size: 28px;
+}
 
-        .btn-kembali {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2c5e38;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+.detail-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #555;
+}
 
-        .btn-kembali:hover {
-            background-color: #1f4227;
-        }
+.btn-kembali {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2c5e38;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-kembali:hover {
+    background-color: #1f4227;
+}
+
 /* =========================================
    PAGINATION (BERANDA)
 ========================================= */
@@ -1644,33 +1668,33 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
    PROFIL: AVATAR & TOMBOL FOTO
 ========================================= */
 .avatar-big {
-    width: 140px; 
-    height: 140px; 
-    overflow: hidden; 
-    padding: 0; 
-    background: #fff; 
-    border: 4px solid #2c5e38; 
-    margin: 0 auto 15px; 
-    border-radius: 50%; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    padding: 0;
+    background: #fff;
+    border: 4px solid #2c5e38;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .avatar-big img {
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 .btn-edit-foto {
-    display: inline-block; 
-    background-color: #f1f1f1; 
-    color: #333; 
-    padding: 8px 18px; 
-    border-radius: 20px; 
-    font-size: 0.85rem; 
-    cursor: pointer; 
-    border: 1px solid #ddd; 
-    transition: all 0.3s ease; 
+    display: inline-block;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
     margin-bottom: 10px;
 }
 
@@ -1686,19 +1710,166 @@ background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)),
 }
 
 .btn-simpan-foto {
-    display: none; /* Awalnya disembunyikan */
-    background-color: #2c5e38; 
-    color: white; 
-    border: none; 
-    padding: 8px 25px; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    font-weight: bold; 
-    font-size: 0.85rem; 
-    transition: all 0.3s ease; 
+    display: none;
+    /* Awalnya disembunyikan */
+    background-color: #2c5e38;
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(44, 94, 56, 0.2);
 }
 
 .btn-simpan-foto:hover {
     background-color: #1f4227;
+}
+
+/* ==========================================================================
+   Klaim Kelulusan Mahasiswa (update_data.php)
+   ========================================================================== */
+
+.claim-box {
+    border-left: 4px solid #28a745;
+    background-color: #f8fff9;
+}
+
+.claim-title {
+    color: #155724;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.claim-icon-title {
+    width: 24px;
+    height: 24px;
+}
+
+.claim-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.claim-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.claim-form-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.claim-form-group {
+    margin: 0;
+}
+
+.claim-form-group.type-year {
+    flex: 1;
+    min-width: 150px;
+}
+
+.claim-form-group.type-file {
+    flex: 2;
+    min-width: 250px;
+}
+
+.claim-label {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.claim-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.claim-input-file {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    background: white;
+}
+
+.claim-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Kotak Informasi Pengajuan Pending */
+.alert-pending {
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.alert-pending p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+}
+
+/* Kotak Informasi Pengajuan Ditolak */
+.alert-rejected {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alert-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.alert-rejected .alert-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Ikon Kecil Pengganti Emoji di Dashboard Admin */
+.admin-mini-icon {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -2px;
+    object-fit: contain;
 }

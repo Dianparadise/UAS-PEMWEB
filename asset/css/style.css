@@ -1873,3 +1873,12 @@ body {
     margin-top: -2px;
     object-fit: contain;
 }
+
+.tombol_edit_Profil {
+    background: #ff9800;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
+}

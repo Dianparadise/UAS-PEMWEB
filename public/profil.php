@@ -58,12 +58,16 @@ $queryRequest = $data['request'];
                 <div class="user-avatar-section" style="text-align: center;">
 
                     <div class="avatar-big">
-                        <img id="preview-foto" src="../<?= htmlspecialchars($data_profil['foto'] ?? 'asset/img/default-avatar.png'); ?>" alt="Foto Profil">
+                        <img id="preview-foto"
+                            src="../<?= htmlspecialchars($data_profil['foto'] ?? 'asset/img/default-avatar.png'); ?>"
+                            alt="Foto Profil">
                     </div>
 
-                    <form action="../app/controller/UpdateFotoController.php" method="POST" enctype="multipart/form-data" style="margin-bottom: 25px;">
+                    <form action="../app/controller/UpdateFotoController.php" method="POST"
+                        enctype="multipart/form-data" style="margin-bottom: 25px;">
 
-                        <input type="file" name="foto_profil" id="input-foto" accept="image/jpeg, image/png, image/jpg" required style="display: none;" onchange="previewImage(event)">
+                        <input type="file" name="foto_profil" id="input-foto" accept="image/jpeg, image/png, image/jpg"
+                            required style="display: none;" onchange="previewImage(event)">
 
                         <label for="input-foto" class="btn-edit-foto" id="label-foto">
                             Edit Foto
@@ -79,7 +83,8 @@ $queryRequest = $data['request'];
                     <h3 style="margin-bottom: 5px; color: #333; font-size: 1.3rem;">
                         <?= $data_user['nama']; ?>
                     </h3>
-                    <span class="badge-role" style="background-color: #e8f5e9; color: #2c5e38; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">
+                    <span class="badge-role"
+                        style="background-color: #e8f5e9; color: #2c5e38; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">
                         <?= strtoupper($data_user['role']); ?>
                     </span>
                 </div>
@@ -87,7 +92,7 @@ $queryRequest = $data['request'];
                 <script>
                     function previewImage(event) {
                         var reader = new FileReader();
-                        reader.onload = function() {
+                        reader.onload = function () {
                             // Ganti gambar langsung di lingkaran
                             var output = document.getElementById('preview-foto');
                             output.src = reader.result;
@@ -135,7 +140,7 @@ $queryRequest = $data['request'];
                 <section id="biodata" class="content-section">
                     <div class="section-header-box">
                         <h2>Biodata Alumni</h2>
-
+                        <a class="tombol_edit_Profil" href="edit_profil.php">Edit Profil</a>
                     </div>
 
                     <div class="info-grid">

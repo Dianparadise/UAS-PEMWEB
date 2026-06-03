@@ -1,18 +1,19 @@
 <?php
-session_start();
 require_once '../../config/koneksi.php';
 
-if (!isset($_SESSION['status']) || $_SESSION['role'] !== 'admin') {
-    header("location: ../../public/login.php");
-    exit;
-}
+$user_id = $_POST['user_id'];
+$id_profil = $_POST['id_profil'];
+$nama = $_POST['nama'];
+$email = $_POST['email'];
+$angkatan = $_POST['angkatan'];
+$pekerjaan = $_POST['pekerjaan'];
+$perusahaan = $_POST['perusahaan'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_profil = $_POST['id_profil'];
-    $angkatan = mysqli_real_escape_string($conn, $_POST['angkatan']);
+// Update ke tabel users
+mysqli_query($conn, "UPDATE users SET nama='$nama', email='$email' WHERE id='$user_id'");
 
-    mysqli_query($conn, "UPDATE alumni_profiles SET angkatan='$angkatan' WHERE id='$id_profil'");
+// Update ke tabel alumni_profiles
+mysqli_query($conn, "UPDATE alumni_profiles SET angkatan='$angkatan', pekerjaan='$pekerjaan', perusahaan='$perusahaan' WHERE id='$id_profil'");
 
-    header("location: ../../public/admin_alumni_crud.php");
-    exit;
-}
+header("location: ../../public/admin_alumni_crud.php");
+?>

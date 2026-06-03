@@ -34,7 +34,7 @@
         <form action="../app/controller/LoginController.php" method="POST" class="login-form">
             <div class="input-group">
                 <label for="username">Email</label>
-                <input type="text" id="username" name="username" placeholder="Masukkan email / username..." required>
+                <input type="email" id="username" name="username" placeholder="Masukkan email / username..." required>
             </div>
 
             <div class="input-group">
@@ -42,7 +42,10 @@
                 <input type="password" id="password" name="password" placeholder="Masukkan password..." required>
 
                 <div style="text-align: right; margin-top: 8px;">
-                    <a href="forgot_password.php" style="color: #2c5e38; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Lupa password?</a>
+                    <a href="forgot_password.php"
+                        style="color: #2c5e38; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.3s;"
+                        onmouseover="this.style.textDecoration='underline'"
+                        onmouseout="this.style.textDecoration='none'">Lupa password?</a>
                 </div>
             </div>
 

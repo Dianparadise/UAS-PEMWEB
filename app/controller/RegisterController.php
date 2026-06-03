@@ -5,8 +5,8 @@ require_once '../../config/koneksi.php';
 $nama = mysqli_real_escape_string($conn, $_POST['nama']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $role = mysqli_real_escape_string($conn, $_POST['role']);
-$password = $_POST['password'];
-$konfirmasi_password = $_POST['konfirmasi_password'];
+$password = md5($_POST['password']);
+$konfirmasi_password = md5($_POST['konfirmasi_password']);
 
 // 2. VALIDASI ANGKATAN (WAJIB DIISI!)
 // Jika kosong, langsung tolak dan kembalikan ke halaman register

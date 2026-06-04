@@ -9,12 +9,17 @@ class AlumniProfileModel
     {
         global $conn;
 
-        $query = mysqli_query(
+      $query = mysqli_query(
             $conn,
-            "SELECT * FROM alumni_profiles
-             WHERE user_id='$user_id'"
-        );
-
+            "SELECT
+                a.*,
+                j.nama_jurusan,
+                f.nama_fakultas
+            FROM alumni_profiles a
+            LEFT JOIN jurusan j ON a.jurusan_id = j.id
+            LEFT JOIN fakultas f ON j.fakultas_id = f.id
+            WHERE a.user_id = $user_id"
+);
         return mysqli_fetch_assoc($query);
     }
 }
@@ -26,26 +31,32 @@ class AlumniHomeModel
     {
         global $conn;
         // MENGUBAH 'WHERE 1=1' MENJADI FILTER STATUS KELULUSAN YANG DISETUJUI
-        $sql = "SELECT COUNT(*) as total FROM alumni_profiles 
-                JOIN users ON alumni_profiles.user_id = users.id 
-                WHERE alumni_profiles.status_kelulusan = 'disetujui' ";
+        $sql = "SELECT COUNT(*) as total
+        FROM alumni_profiles a
+        JOIN users u ON a.user_id = u.id
+        LEFT JOIN jurusan j ON a.jurusan_id = j.id
+        LEFT JOIN fakultas f ON j.fakultas_id = f.id
+        WHERE a.status_kelulusan = 'disetujui'";
 
         if (!empty($search)) {
-            $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";
-        }
-        if (!empty($tahun)) {
-            $sql .= " AND alumni_profiles.tahun_kelulusan = '$tahun'";
-        }
-        if (!empty($angkatan)) {
-            $sql .= " AND alumni_profiles.angkatan = '$angkatan'";
-        }
-        if (!empty($jurusan)) {
-            $sql .= " AND alumni_profiles.jurusan = '$jurusan'";
-        }
-        if (!empty($fakultas)) {
-            $sql .= " AND alumni_profiles.fakultas = '$fakultas'";
+    $sql .= " AND (u.nama LIKE '%$search%' OR a.pekerjaan LIKE '%$search%')";
         }
 
+        if (!empty($tahun)) {
+            $sql .= " AND a.tahun_kelulusan = '$tahun'";
+        }
+
+        if (!empty($angkatan)) {
+            $sql .= " AND a.angkatan = '$angkatan'";
+        }
+
+        if (!empty($jurusan)) {
+            $sql .= " AND j.nama_jurusan = '$jurusan'";
+        }
+
+        if (!empty($fakultas)) {
+            $sql .= " AND f.nama_fakultas = '$fakultas'";
+        }
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
         return $row['total'];
@@ -56,28 +67,38 @@ class AlumniHomeModel
     {
         global $conn;
         // MENGUBAH 'WHERE 1=1' MENJADI FILTER STATUS KELULUSAN YANG DISETUJUI
-        $sql = "SELECT alumni_profiles.*, users.nama FROM alumni_profiles 
-                JOIN users ON alumni_profiles.user_id = users.id 
-                WHERE alumni_profiles.status_kelulusan = 'disetujui' ";
+        $sql = "SELECT
+                a.*,
+                u.nama,
+                j.nama_jurusan,
+                f.nama_fakultas
+            FROM alumni_profiles a
+            JOIN users u ON a.user_id = u.id
+            LEFT JOIN jurusan j ON a.jurusan_id = j.id
+            LEFT JOIN fakultas f ON j.fakultas_id = f.id
+            WHERE a.status_kelulusan = 'disetujui' ";
+                
+            if (!empty($search)) {
+                $sql .= " AND (u.nama LIKE '%$search%' OR a.pekerjaan LIKE '%$search%')";
+            }
 
-        if (!empty($search)) {
-            $sql .= " AND (users.nama LIKE '%$search%' OR alumni_profiles.pekerjaan LIKE '%$search%')";
-        }
-        if (!empty($tahun)) {
-            $sql .= " AND alumni_profiles.tahun_kelulusan = '$tahun'";
-        }
-        if (!empty($angkatan)) {
-            $sql .= " AND alumni_profiles.angkatan = '$angkatan'";
-        }
-        if (!empty($jurusan)) {
-            $sql .= " AND alumni_profiles.jurusan = '$jurusan'";
-        }
-        if (!empty($fakultas)) {
-            $sql .= " AND alumni_profiles.fakultas = '$fakultas'";
-        }
+            if (!empty($tahun)) {
+                $sql .= " AND a.tahun_kelulusan = '$tahun'";
+            }
 
+            if (!empty($angkatan)) {
+                $sql .= " AND a.angkatan = '$angkatan'";
+            }
+
+            if (!empty($jurusan)) {
+                $sql .= " AND j.nama_jurusan = '$jurusan'";
+            }
+
+            if (!empty($fakultas)) {
+                $sql .= " AND f.nama_fakultas = '$fakultas'";
+            }
         // Urutkan dari yang terbaru, lalu potong datanya (LIMIT)
-        $sql .= " ORDER BY alumni_profiles.tahun_kelulusan DESC, alumni_profiles.created_at DESC ";
+       $sql .= " ORDER BY a.tahun_kelulusan DESC, a.created_at DESC ";
         $sql .= " LIMIT $limit OFFSET $offset";
 
         return mysqli_query($conn, $sql);
@@ -89,17 +110,22 @@ class AlumniHomeModel
         global $conn;
         $user_id = mysqli_real_escape_string($conn, $user_id);
 
-        $query = mysqli_query($conn, "
-            SELECT 
-                alumni_profiles.*,
-                users.nama,
-                users.email
-            FROM alumni_profiles
-            JOIN users 
-                ON alumni_profiles.user_id = users.id
-            WHERE users.id = '$user_id'
-        ");
-
+      $query = mysqli_query($conn, "
+        SELECT
+            a.*,
+            u.nama,
+            u.email,
+            j.nama_jurusan,
+            f.nama_fakultas
+        FROM alumni_profiles a
+        JOIN users u
+            ON a.user_id = u.id
+        LEFT JOIN jurusan j
+            ON a.jurusan_id = j.id
+        LEFT JOIN fakultas f
+            ON j.fakultas_id = f.id
+        WHERE u.id = '$user_id'
+    ");
         return mysqli_fetch_assoc($query);
     }
 }

@@ -54,6 +54,24 @@
                 </select>
             </div>
 
+            <div class="input-group">
+                <label for="jurusan_id">Jurusan</label>
+                <select id="jurusan_id" name="jurusan_id" required
+                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.95rem; outline: none; background: white;"
+                    required>
+                    <option value="" disabled selected>-- Pilih Jurusan --</option>
+                    <option value="1">Teknik Informatika</option>
+                    <option value="2">Sistem Informasi</option>
+                    <option value="3">Ilmu Komputer</option>
+                    <option value="4">Teknik Elektro</option>
+                    <option value="5">Teknik Mesin</option>
+                    <option value="6">Teknik Industri</option>
+                    <option value="7">Manajemen</option>
+                    <option value="8">Akuntansi</option>
+                    <option value="9">Ilmu Hukum</option>
+                </select>
+            </div>
+
             <div class="input-group" id="kotak_angkatan" style="display: none;">
                 <label for="angkatan">Tahun Angkatan <span style="color:red">*</span></label>
                 <input type="number" id="angkatan" name="angkatan" placeholder="Contoh: 2021">

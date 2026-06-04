@@ -11,16 +11,37 @@ if (!isset($_SESSION['status']) || $_SESSION['role'] !== 'admin') {
 $search = "";
 if (isset($_GET['search'])) {
     $search = mysqli_real_escape_string($conn, $_GET['search']);
-    $query = mysqli_query($conn, "SELECT ap.*, u.nama, u.email FROM alumni_profiles ap 
-                                  JOIN users u ON ap.user_id = u.id 
-                                  WHERE u.nama LIKE '%$search%' 
-                                  OR u.email LIKE '%$search%' 
-                                  OR ap.pekerjaan LIKE '%$search%' 
-                                  OR ap.perusahaan LIKE '%$search%' 
-                                  ORDER BY ap.id DESC");
+        $query = mysqli_query($conn, "
+        SELECT
+            ap.*,
+            u.nama,
+            u.email,
+            j.nama_jurusan,
+            f.nama_fakultas
+        FROM alumni_profiles ap
+        JOIN users u ON ap.user_id = u.id
+        LEFT JOIN jurusan j ON ap.jurusan_id = j.id
+        LEFT JOIN fakultas f ON j.fakultas_id = f.id
+        WHERE u.nama LIKE '%$search%'
+        OR u.email LIKE '%$search%'
+        OR ap.pekerjaan LIKE '%$search%'
+        OR ap.perusahaan LIKE '%$search%'
+        ORDER BY ap.id DESC
+    ");
 } else {
-    $query = mysqli_query($conn, "SELECT ap.*, u.nama, u.email FROM alumni_profiles ap 
-                                  JOIN users u ON ap.user_id = u.id ORDER BY ap.id DESC");
+    $query = mysqli_query($conn, "
+    SELECT
+        ap.*,
+        u.nama,
+        u.email,
+        j.nama_jurusan,
+        f.nama_fakultas
+    FROM alumni_profiles ap
+    JOIN users u ON ap.user_id = u.id
+    LEFT JOIN jurusan j ON ap.jurusan_id = j.id
+    LEFT JOIN fakultas f ON j.fakultas_id = f.id
+    ORDER BY ap.id DESC
+"); 
 }
 
 $count_pending_kerja = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM update_requests WHERE status='pending'"))['total'];
@@ -70,6 +91,8 @@ $total_notif = $count_pending_kerja + $count_pending_lulus;
                 <tr>
                     <th>Nama</th>
                     <th>Email</th>
+                    <th>Jurusan</th>
+                    <th>Fakultas</th>
                     <th>Angkatan</th>
                     <th>Pekerjaan</th>
                     <th>Perusahaan</th>
@@ -83,17 +106,53 @@ $total_notif = $count_pending_kerja + $count_pending_lulus;
                             <form action="../app/controller/UpdateAlumniController.php" method="POST">
                                 <input type="hidden" name="id_profil" value="<?= $row['id'] ?>">
                                 <input type="hidden" name="user_id" value="<?= $row['user_id'] ?>">
-                                <td><input type="text" name="nama" value="<?= htmlspecialchars($row['nama']) ?>"
-                                        class="admin-input-table"></td>
-                                <td><input type="email" name="email" value="<?= htmlspecialchars($row['email']) ?>"
-                                        class="admin-input-table"></td>
-                                <td><input type="number" name="angkatan" value="<?= $row['angkatan'] ?>"
-                                        class="admin-input-table" style="width: 70px;"></td>
-                                <td><input type="text" name="pekerjaan" value="<?= htmlspecialchars($row['pekerjaan'] ?? '') ?>"
-                                        class="admin-input-table"></td>
-                                <td><input type="text" name="perusahaan"
-                                        value="<?= htmlspecialchars($row['perusahaan'] ?? '') ?>" class="admin-input-table">
-                                </td>
+                                <td>
+                                <input type="text" name="nama"
+                                    value="<?= htmlspecialchars($row['nama']) ?>"
+                                    class="admin-input-table">
+                            </td>
+
+                            <td>
+                                <input type="email" name="email"
+                                    value="<?= htmlspecialchars($row['email']) ?>"
+                                    class="admin-input-table">
+                            </td>
+                            <td>
+                                <input type="number" name="angkatan"
+                                    value="<?= $row['angkatan'] ?>"
+                                    class="admin-input-table">
+                            </td>
+
+                            <td>
+                                <select name="jurusan_id">
+                                    <option value="1" <?= $row['jurusan_id']==1 ? 'selected' : '' ?>>Teknik Informatika</option>
+                                    <option value="2" <?= $row['jurusan_id']==2 ? 'selected' : '' ?>>Sistem Informasi</option>
+                                    <option value="3" <?= $row['jurusan_id']==3 ? 'selected' : '' ?>>Ilmu Komputer</option>
+                                    <option value="4" <?= $row['jurusan_id']==4 ? 'selected' : '' ?>>Teknik Elektro</option>
+                                    <option value="5" <?= $row['jurusan_id']==5 ? 'selected' : '' ?>>Teknik Mesin</option>
+                                    <option value="6" <?= $row['jurusan_id']==6 ? 'selected' : '' ?>>Teknik Industri</option>
+                                    <option value="7" <?= $row['jurusan_id']==7 ? 'selected' : '' ?>>Manajemen</option>
+                                    <option value="8" <?= $row['jurusan_id']==8 ? 'selected' : '' ?>>Akuntansi</option>
+                                    <option value="9" <?= $row['jurusan_id']==9 ? 'selected' : '' ?>>Ilmu Hukum</option>
+                                </select>
+                            </td>
+
+                            <td>
+                                <?= htmlspecialchars($row['nama_fakultas']) ?>
+                            </td>
+
+                            
+                            <td>
+                                <input type="text" name="pekerjaan"
+                                    value="<?= htmlspecialchars($row['pekerjaan']) ?>"
+                                    class="admin-input-table">
+                            </td>
+
+                            <td>
+                                <input type="text" name="perusahaan"
+                                    value="<?= htmlspecialchars($row['perusahaan']) ?>"
+                                    class="admin-input-table">
+                            </td>
                                 <td>
                                     <button type="submit" class="admin-btn admin-btn-edit">Simpan</button>
                             </form>

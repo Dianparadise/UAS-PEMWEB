@@ -5,6 +5,7 @@ require_once '../../config/koneksi.php';
 $nama = mysqli_real_escape_string($conn, $_POST['nama']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $role = mysqli_real_escape_string($conn, $_POST['role']);
+$jurusan_id = mysqli_real_escape_string($conn, $_POST['jurusan_id']);
 $password = md5($_POST['password']);
 $konfirmasi_password = md5($_POST['konfirmasi_password']);
 
@@ -42,8 +43,10 @@ if (mysqli_query($conn, $query_user)) {
 
     // 7. Buatkan profil di tabel `alumni_profiles`
     // Perhatikan: $angkatan tidak pakai kutip lagi karena sudah diatur di langkah nomor 2
-    $query_profil = "INSERT INTO alumni_profiles (user_id, angkatan, tahun_kelulusan, created_at) VALUES ('$user_id_baru', $angkatan, $tahun_kelulusan, NOW())";
-
+    $query_profil = "INSERT INTO alumni_profiles
+(user_id, jurusan_id, angkatan, tahun_kelulusan, created_at)
+VALUES
+('$user_id_baru', '$jurusan_id', $angkatan, $tahun_kelulusan, NOW())";
     mysqli_query($conn, $query_profil);
 
     // Sukses, tendang ke login!

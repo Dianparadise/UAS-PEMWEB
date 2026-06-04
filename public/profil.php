@@ -16,6 +16,7 @@ $data = $controller->index($_SESSION['email']);
 
 $data_user = $data['user'];
 $data_profil = $data['profil'];
+
 $queryRequest = $data['request'];
 
 ?>
@@ -116,7 +117,7 @@ $queryRequest = $data['request'];
                         </a>
 
                         <a href="#status-pengajuan" class="menu-item">
-                            <img src="../uploads/Asset/status.png" alt="Status" class="menu-icon">
+                            <img src="../uploads/Asset/status.pngfakultas" alt="Status" class="menu-icon">
                             Status Pengajuan
                         </a>
 
@@ -159,13 +160,14 @@ $queryRequest = $data['request'];
                         <div class="info-group">
                             <label>Fakultas</label>
                             <p>
-                                <?= htmlspecialchars($data_profil['fakultas'] ?? '- Belum diisi -'); ?>
+                                <?= htmlspecialchars($data_profil['nama_fakultas'] ?? '- Belum diisi -'); ?>
                             </p>
+                            
                         </div>
                         <div class="info-group">
                             <label>Jurusan</label>
                             <p>
-                                <?= htmlspecialchars($data_profil['jurusan'] ?? '- Belum diisi -'); ?>
+                                <?= htmlspecialchars($data_profil['nama_jurusan'] ?? '- Belum diisi -'); ?>
                             </p>
                         </div>
                         <div class="info-group">
@@ -190,6 +192,12 @@ $queryRequest = $data['request'];
                             <label>Perusahaan</label>
                             <p>
                                 <?= $data_profil['perusahaan'] ?? '- Belum diisi -'; ?>
+                            </p>
+                        </div>
+                        <div class="info-group">
+                            <label>Bio Singkat</label>
+                            <p>
+                                <?= $data_profil['bio'] ?? '- Belum diisi -'; ?>
                             </p>
                         </div>
                     </div>

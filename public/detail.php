@@ -82,9 +82,9 @@ if (!$alumniDetail) {
 
                 <hr style="border: 1px solid #eee; margin-bottom: 20px;">
 
-                <p></p><strong>Fakultas :</strong> <?= htmlspecialchars($alumniDetail['fakultas'] ?? '-'); ?></p>
-                <p><strong>Jurusan :</strong> <?= htmlspecialchars($alumniDetail['jurusan'] ?? '-'); ?></p>
-                <p><strong>Angkatan :</strong> <?= htmlspecialchars($alumniDetail['angkatan'] ?? '-'); ?></p>
+               
+               <p><strong>Fakultas :</strong> <?= htmlspecialchars($alumniDetail['nama_fakultas'] ?? '-'); ?></p>
+                <p><strong>Jurusan :</strong> <?= htmlspecialchars($alumniDetail['nama_jurusan'] ?? '-'); ?></p>
                 <p><strong>Tahun Kelulusan :</strong> <?= htmlspecialchars($alumniDetail['tahun_kelulusan'] ?? '-'); ?>
                 </p>
                 <p><strong>Pekerjaan Saat Ini :</strong> <?= htmlspecialchars($alumniDetail['pekerjaan'] ?? '-'); ?></p>
@@ -110,10 +110,8 @@ if (!$alumniDetail) {
                         </a>
                     </p>
                 <?php endif; ?>
-                <p class="alumni-bio" style="line-height: 1.6; text-align: justify; color: #555; font-style: italic;">
-                    "<?= htmlspecialchars($alumniDetail['biografi'] ?? 'Belum menuliskan deskripsi profil.'); ?>"
-                </p>
-
+                
+                <p><strong>Bio Singkat :</strong> <?= htmlspecialchars($alumniDetail['bio'] ?? '-'); ?></p>
                 <hr style="border: 1px solid #eee; margin-bottom: 20px;">
 
                 <a href="index.php" class="btn-kembali">&larr;Kembali ke Beranda</a>

@@ -10,6 +10,18 @@ if (!isset($_SESSION['reset_email']) || $_SERVER['REQUEST_METHOD'] != 'POST') {
 
 $email = $_SESSION['reset_email'];
 $password_baru = mysqli_real_escape_string($conn, $_POST['password_baru']);
+// Ambil password lama dari database
+$query = mysqli_query($conn, "SELECT password FROM users WHERE email='$email'");
+$user = mysqli_fetch_assoc($query);
+
+// Bandingkan password baru dengan password lama
+if ($password_baru == $user['password']) {
+    echo "<script>
+            alert('Password baru tidak boleh sama dengan password sebelumnya!');
+            window.location='../../public/reset_password.php';
+          </script>";
+    exit;
+}
 
 // Eksekusi update password ke tabel users
 $query_update = mysqli_query($conn, "UPDATE users SET password='$password_baru' WHERE email='$email'");

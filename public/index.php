@@ -149,9 +149,9 @@ $current_page = $result['current_page'];
                             echo 'selected'; ?>>Bisnis
                             Digital</option>
 
-                        <option value="Teknik Industri" <?php if ($jurusan == 'Teknik Industri')
+                        <option value="Teknik Elektro" <?php if ($jurusan == 'Teknik Elektro')
                             echo 'selected'; ?>>
-                            Teknik Industri</option>
+                            Teknik Elektro</option>
                         <option value="Teknik Sipil" <?php if ($jurusan == 'Teknik Sipil')
                             echo 'selected'; ?>>Teknik
                             Sipil</option>

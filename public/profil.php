@@ -117,7 +117,7 @@ $queryRequest = $data['request'];
                         </a>
 
                         <a href="#status-pengajuan" class="menu-item">
-                            <img src="../uploads/Asset/status.pngfakultas" alt="Status" class="menu-icon">
+                            <img src="../uploads/Asset/status.png" alt="Status" class="menu-icon">
                             Status Pengajuan
                         </a>
 

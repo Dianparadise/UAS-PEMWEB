@@ -19,20 +19,16 @@ body {
 }
 
 .container {
-
     width: 95%;
-
     max-width: 1600px;
-
     margin: 0 auto;
 }
 
 /* =========================================
-   HEADER UTAMA (Biru)
+   HEADER UTAMA
 ========================================= */
 .main-header {
     background-color: #315739;
-    /* Biru gelap ala IPB/Pendidikan */
     color: white;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -53,8 +49,6 @@ body {
 
 .logo-img {
     height: 50px;
-
-    /* Kalau logonya transparan, biar kelihatan */
     border-radius: 4px;
     padding: 2px;
 }
@@ -91,12 +85,9 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-
     flex-wrap: wrap;
-
     border-radius: 4px;
     background: white;
-
     padding: 6px;
 }
 
@@ -123,7 +114,7 @@ body {
 }
 
 /* =========================================
-   JUDUL SECTION
+   JUDUL SECTION & TRENDING
 ========================================= */
 .section-title {
     color: #18a734;
@@ -134,9 +125,6 @@ body {
     text-transform: uppercase;
 }
 
-/* =========================================
-   TRENDING SECTION (Atas)
-========================================= */
 .section-trending {
     margin-bottom: 40px;
 }
@@ -144,7 +132,6 @@ body {
 .trending-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Dua kolom sama besar */
     gap: 20px;
 }
 
@@ -153,7 +140,6 @@ body {
     border-radius: 8px;
     overflow: hidden;
     height: 350px;
-    /* Tinggi disamakan */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -162,7 +148,6 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    /* Fokus ke wajah */
 }
 
 .card-info-overlay {
@@ -180,182 +165,100 @@ body {
     margin-bottom: 5px;
 }
 
-/* =========================================
-   KONTEN TENGAH (Terbaru & Populer)
-========================================= */
 .content-middle-grid {
     display: block;
-
-
     gap: 30px;
 }
 
 /* =========================================
    LAYOUT CONTENT + FILTER SIDEBAR
 ========================================= */
-
 .content-layout {
-
     display: flex;
-
     gap: 30px;
-
     align-items: flex-start;
     margin-top: 40px;
 }
 
+.content-main {
+    flex: 1;
+}
+
 .filter-sidebar {
-
     width: 260px;
-
     min-width: 260px;
-
     background: white;
-
-    padding: 20px;
-
-    border-radius: 12px;
-
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e5e5;
     flex-shrink: 0;
     position: sticky;
     top: 20px;
     max-height: 90vh;
-    /* Membatasi tinggi maksimal sejauh 90% dari layar */
     overflow-y: auto;
-    /* Memunculkan scrollbar otomatis jika isinya kepanjangan */
 }
 
-.content-main {
-
-    flex: 1;
-}
-
-.content-main {
-
-    flex: 1;
-}
-
-/* SIDEBAR FILTER */
-.filter-sidebar {
-
-    width: 260px;
-
-    background: white;
-
-    padding: 22px;
-
-    border-radius: 14px;
-
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-
-    border: 1px solid #e5e5e5;
-
-    flex-shrink: 0;
-}
-
-/* TITLE */
 .filter-sidebar h3 {
-
     margin-bottom: 18px;
-
     font-size: 22px;
-
     color: #2d5a3d;
-
     font-weight: 700;
 }
 
-/* FORM */
 .sidebar-filter {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 16px;
 }
 
-/* LABEL */
 .sidebar-filter label {
-
     font-size: 14px;
-
     font-weight: 600;
-
     color: #444;
-
     margin-bottom: -8px;
 }
 
-/* SELECT */
 .sidebar-filter select {
-
     padding: 12px 14px;
-
     border-radius: 10px;
-
     border: 1px solid #dcdcdc;
-
     background: #f9f9f9;
-
     font-size: 14px;
-
     transition: 0.2s ease;
 }
 
-/* FOCUS EFFECT */
 .sidebar-filter select:focus {
-
     outline: none;
-
     border-color: #2d5a3d;
-
     background: white;
-
     box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.15);
 }
 
-/* BUTTON */
 .sidebar-filter button {
-
     margin-top: 10px;
-
     padding: 13px;
-
     border: none;
-
     border-radius: 10px;
-
     background: #2d5a3d;
-
     color: white;
-
     font-size: 15px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition: 0.2s ease;
 }
 
-/* HOVER BUTTON */
 .sidebar-filter button:hover {
-
     background: #234730;
-
     transform: translateY(-1px);
 }
 
 /* =========================================
-   ALUMNI GRID (TERBARU & FAKULTAS)
+   ALUMNI GRID & TAGS
 ========================================= */
 .alumni-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* 3 Kolom */
     gap: 20px;
 }
 
@@ -387,11 +290,6 @@ body {
     color: #222;
 }
 
-
-
-/* =========================================
-   TAGS & META INFO
-========================================= */
 .meta {
     font-size: 0.85rem;
     opacity: 0.9;
@@ -421,7 +319,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Warna Tag */
 .tag-orange {
     background-color: #f39c12;
 }
@@ -444,39 +341,6 @@ body {
 }
 
 /* =========================================
-   RESPONSIVE (Untuk Layar HP & Tablet)
-========================================= */
-@media (max-width: 992px) {
-    .content-middle-grid {
-        grid-template-columns: 1fr;
-        /* Jadi 1 kolom bersusun ke bawah */
-    }
-
-    .alumni-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 kolom untuk tablet */
-    }
-}
-
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .trending-grid,
-    .alumni-grid {
-        grid-template-columns: 1fr;
-        /* 1 kolom penuh untuk HP */
-    }
-}
-
-/* =========================================
    HALAMAN LOGIN
 ========================================= */
 .login-body {
@@ -485,8 +349,6 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-
-    /* Kode untuk memasang foto background dengan overlay hijau gelap transparan */
     background-image: linear-gradient(rgba(24, 75, 44, 0.7), rgba(24, 75, 44, 0.7)), url('../../uploads/Asset/bgLogin.png');
     background-size: cover;
     background-position: center;
@@ -498,7 +360,6 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    /* Bayangan ditebalkan sedikit agar kotak lebih "pop out" */
     width: 100%;
     max-width: 400px;
     position: relative;
@@ -514,18 +375,14 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    /* Membuat latar belakang ikon menjadi bulat */
     background-color: #f1f1f1;
-    /* Warna abu-abu terang */
     transition: 0.3s;
     text-decoration: none;
 }
 
 .btn-back-icon:hover {
     background-color: #e2e2e2;
-    /* Sedikit lebih gelap saat disorot */
     transform: scale(1.05);
-    /* Efek membesar sedikit */
 }
 
 .btn-back-icon img {
@@ -623,147 +480,15 @@ body {
 }
 
 /* =========================================
-   HALAMAN PROFIL
-========================================= */
-.profile-wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.profile-card {
-    background-color: white;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header-bg {
-    height: 120px;
-    background: linear-gradient(135deg, #2c5e38, #3949ab);
-}
-
-.profile-avatar {
-    display: flex;
-    justify-content: center;
-    margin-top: -50px;
-}
-
-.avatar-circle {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border: 4px solid #fff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #2c5e38;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-info {
-    padding: 20px 30px 30px;
-    text-align: center;
-}
-
-.profile-info h2 {
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.role-badge {
-    display: inline-block;
-    background-color: #e8eaf6;
-    color: #2c5e38;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-}
-
-.profile-details {
-    text-align: left;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.detail-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.detail-item:last-child {
-    border-bottom: none;
-}
-
-.detail-label {
-    color: #666;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.detail-value {
-    color: #333;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.profile-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-edit,
-.btn-password {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-edit {
-    background-color: #2c5e38;
-    color: white;
-}
-
-.btn-edit:hover {
-    background-color: #2c5e38;
-}
-
-.btn-password {
-    background-color: #f1f1f1;
-    color: #333;
-}
-
-.btn-password:hover {
-    background-color: #e2e2e2;
-}
-
-/* =========================================
-   LAYOUT DASHBOARD PROFIL BARU
+   HALAMAN PROFIL (DASHBOARD)
 ========================================= */
 .dashboard-layout {
     display: grid;
     grid-template-columns: 280px 1fr;
-    /* Kiri untuk menu, kanan untuk konten */
     gap: 30px;
     margin-top: 20px;
 }
 
-/* SIDEBAR KIRI */
 .profile-sidebar {
     background-color: white;
     border-radius: 10px;
@@ -782,17 +507,26 @@ body {
 }
 
 .avatar-big {
-    width: 80px;
-    height: 80px;
-    background-color: #2c5e38;
-    color: white;
+    width: 140px;
+    height: 140px;
+    background-color: #fff;
+    color: #2c5e38;
     font-size: 2.2rem;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 4px solid #2c5e38;
     border-radius: 50%;
     margin: 0 auto 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.avatar-big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .user-avatar-section h3 {
@@ -810,7 +544,47 @@ body {
     border-radius: 15px;
 }
 
-/* MENU LINK SIDEBAR */
+.btn-edit-foto {
+    display: inline-block;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.btn-edit-foto:hover {
+    background-color: #e2e2e2;
+}
+
+.btn-edit-foto.success-state {
+    background-color: #e8f5e9 !important;
+    border-color: #2c5e38 !important;
+    color: #2c5e38 !important;
+}
+
+.btn-simpan-foto {
+    display: none;
+    background-color: #2c5e38;
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(44, 94, 56, 0.2);
+}
+
+.btn-simpan-foto:hover {
+    background-color: #1f4227;
+}
+
 .sidebar-menu {
     display: flex;
     flex-direction: column;
@@ -820,9 +594,7 @@ body {
 .menu-item {
     display: flex;
     align-items: center;
-    /* Kunci agar ikon dan teks rata tengah secara vertikal */
     gap: 12px;
-    /* Jarak antara ikon gambar dan teks */
     padding: 12px 15px;
     color: #555;
     text-decoration: none;
@@ -834,24 +606,16 @@ body {
 .menu-item:hover,
 .menu-item.active {
     background-color: #e8f5e9;
-    /* Latar belakang hijau muda */
     color: #2c5e38;
-    /* Teks warna hijau tua */
 }
 
-/* Mengatur ukuran gambar ikon yang diambil dari folder uploads */
 .menu-icon {
     width: 22px;
-    /* Lebar ikon mutlak */
     height: 22px;
-    /* Tinggi ikon mutlak */
     object-fit: contain;
-    /* Memastikan gambar ikon tidak gepeng */
     flex-shrink: 0;
-    /* Memastikan ikon tidak menyusut tertekan teks */
 }
 
-/* Khusus tombol logout agar tetap merah */
 .logout-link {
     margin-top: 20px;
     color: #e74c3c;
@@ -865,7 +629,6 @@ body {
     color: #e74c3c;
 }
 
-/* KONTEN UTAMA SEBELAH KANAN */
 .content-section {
     background-color: white;
     border-radius: 10px;
@@ -889,17 +652,15 @@ body {
     font-size: 1.3rem;
 }
 
-.btn-primary-action {
-    background-color: #f39c12;
+.tombol_edit_Profil {
+    background: #ff9800;
     color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
 }
 
-/* GRID DETAIL BIODATA */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -921,13 +682,12 @@ body {
     padding: 10px 12px;
     border-radius: 5px;
     border-left: 3px solid #2c5e38;
-    /* Garis pinggir berubah jadi hijau */
     font-weight: 500;
 }
 
-/* TABEL STATUS PENGAJUAN */
 .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .status-table {
@@ -941,6 +701,7 @@ body {
     padding: 12px 15px;
     border-bottom: 1px solid #eee;
     font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .status-table th {
@@ -955,7 +716,6 @@ body {
     padding: 20px 0 !important;
 }
 
-/* BADGE STATUS */
 .status-badge {
     font-size: 0.8rem;
     font-weight: bold;
@@ -978,7 +738,6 @@ body {
     color: #721c24;
 }
 
-/* FORM UBAH PASSWORD */
 .password-form {
     max-width: 400px;
 }
@@ -1009,7 +768,6 @@ body {
 
 .btn-save-password {
     background-color: #2c5e38;
-    /* Warna hijau utama */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -1019,24 +777,12 @@ body {
     transition: 0.3s;
 }
 
-/* Tambahkan efek ini di bawahnya agar tombol menghijau gelap saat disorot */
 .btn-save-password:hover {
     background-color: #1f4227;
 }
 
-/* RESPONSIVE DASHBOARD */
-@media (max-width: 768px) {
-    .dashboard-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* =========================================
-   HALAMAN UPDATE DATA (DASHBOARD STYLE)
+   HALAMAN UPDATE DATA
 ========================================= */
 .bg-light {
     background-color: #f4f6f9;
@@ -1061,7 +807,6 @@ body {
 .update-layout-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    /* Kiri lebih lebar dari kanan */
     gap: 25px;
 }
 
@@ -1074,7 +819,6 @@ body {
     border: 1px solid #edf2f9;
 }
 
-/* Stepper UI */
 .stepper {
     display: flex;
     align-items: center;
@@ -1121,7 +865,6 @@ body {
     margin: 0 15px;
 }
 
-/* Modern Form */
 .form-title {
     font-size: 1.1rem;
     color: #333;
@@ -1165,7 +908,6 @@ body {
     border-color: #2c5e38;
 }
 
-
 .file-input {
     width: 100%;
     padding: 8px;
@@ -1181,7 +923,6 @@ body {
     color: #777;
 }
 
-/* Buttons */
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -1213,12 +954,9 @@ body {
     background-color: #1f4227;
 }
 
-/* Guide Box */
 .guide-box {
     background-color: #e8f5e9 !important;
-    /* KUNCI: Mengubah latar dari biru muda ke hijau muda sakral */
     border-left: 4px solid #2c5e38 !important;
-    /* Garis pinggir hijau tua */
 }
 
 .guide-box h4 {
@@ -1231,7 +969,6 @@ body {
     color: #555;
 }
 
-/* Status Right Sidebar */
 .status-header {
     display: flex;
     justify-content: space-between;
@@ -1297,7 +1034,6 @@ body {
     margin-top: 15px;
 }
 
-/* History List */
 .history-list {
     margin-top: 15px;
 }
@@ -1361,376 +1097,6 @@ body {
 .history-status-text.rejected {
     color: #dc3545;
 }
-
-/* Responsive Dashboard */
-@media (max-width: 992px) {
-    .update-layout-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .modern-form .form-row {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
-/* ==========================================================================
-   STYLE KHUSUS HALAMAN ADMIN (PANEL MANAGEMENT)
-   ========================================================================== */
-.admin-body {
-    display: flex;
-    background-color: #f4f6f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Sidebar Admin */
-.admin-sidebar {
-    width: 260px;
-    height: 100vh;
-    background-color: #2d5a3b;
-    color: white;
-    padding: 20px;
-    position: fixed;
-}
-
-.admin-sidebar h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #ffffff33;
-    padding-bottom: 15px;
-}
-
-.admin-sidebar a {
-    display: block;
-    color: #cbd5e1;
-    padding: 12px 15px;
-    text-decoration: none;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.admin-sidebar a:hover,
-.admin-sidebar a.active {
-    background-color: #1e3d28;
-    color: white;
-}
-
-.admin-sidebar a.logout {
-    background-color: #a62626;
-    color: white;
-    margin-top: 50px;
-    text-align: center;
-}
-
-.admin-sidebar a.logout:hover {
-    background-color: #7a1b1b;
-}
-
-/* Konten Utama Admin */
-.admin-main-content {
-    margin-left: 260px;
-    flex: 1;
-    padding: 40px;
-}
-
-.admin-header {
-    margin-bottom: 30px;
-}
-
-.admin-header h1 {
-    font-size: 2rem;
-    color: #2d5a3b;
-    margin-bottom: 5px;
-}
-
-/* Grid Statistik Dashboard */
-.admin-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.admin-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid #2d5a3b;
-}
-
-.admin-card.warning {
-    border-left-color: #ff9800;
-}
-
-.admin-card h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.admin-card p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #2d5a3b;
-    margin: 0;
-}
-
-.admin-card.warning p {
-    color: #ff9800;
-}
-
-/* Tabel Data Admin */
-.admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    margin-top: 20px;
-}
-
-.admin-table th,
-.admin-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
-}
-
-.admin-table th {
-    background-color: #2d5a3b;
-    color: white;
-    font-weight: 600;
-}
-
-.admin-table tr:hover {
-    background-color: #f9f9f9;
-}
-
-.admin-table .no-data {
-    text-align: center;
-    padding: 30px;
-    color: #777;
-    font-style: italic;
-}
-
-/* Form komponen di dalam Tabel */
-.admin-inline-form {
-    display: inline;
-}
-
-.admin-input-table {
-    width: 70px;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Tombol-tombol Aksi Admin */
-.admin-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.85rem;
-    display: inline-block;
-}
-
-.admin-btn-approve {
-    background-color: #28a745;
-    color: white;
-}
-
-.admin-btn-reject {
-    background-color: #dc3545;
-    color: white;
-    margin-left: 5px;
-}
-
-.admin-btn-file {
-    background-color: #007bff;
-    color: white;
-}
-
-.admin-btn-edit {
-    background-color: #ff9800;
-    color: white;
-}
-
-.admin-btn-delete {
-    background-color: #dc3545;
-    color: white;
-    margin-left: 5px;
-}
-
-
-
-/* ==========================================================================
-   STYLE KHUSUS HALAMAN detail (PANEL MANAGEMENT)
-   ========================================================================== */
-.detail-wrapper {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-top: 40px;
-    display: flex;
-    gap: 40px;
-}
-
-.detail-foto {
-    flex-shrink: 0 !important;
-    width: 350px !important;
-}
-
-.detail-foto img {
-    width: 100% !important;
-    height: 400px !important;
-    border-radius: 8px !important;
-    object-fit: cover !important;
-}
-
-.detail-info h2 {
-    margin-top: 0;
-    color: #2c5e38;
-    /* Warna hijau khas UI kamu */
-    font-size: 28px;
-}
-
-.detail-info p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-    color: #555;
-}
-
-.btn-kembali {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #2c5e38;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.btn-kembali:hover {
-    background-color: #1f4227;
-}
-
-/* =========================================
-   PAGINATION (BERANDA)
-========================================= */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.page-btn {
-    padding: 8px 16px;
-    background-color: white;
-    color: #2c5e38;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.page-btn:hover {
-    background-color: #f1f1f1;
-    border-color: #2c5e38;
-}
-
-.page-btn.active {
-    background-color: #2c5e38;
-    color: white;
-    border-color: #2c5e38;
-}
-
-/* =========================================
-   PROFIL: AVATAR & TOMBOL FOTO
-========================================= */
-.avatar-big {
-    width: 140px;
-    height: 140px;
-    overflow: hidden;
-    padding: 0;
-    background: #fff;
-    border: 4px solid #2c5e38;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.avatar-big img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.btn-edit-foto {
-    display: inline-block;
-    background-color: #f1f1f1;
-    color: #333;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease;
-    margin-bottom: 10px;
-}
-
-.btn-edit-foto:hover {
-    background-color: #e2e2e2;
-}
-
-/* Class ini akan dipanggil oleh JavaScript saat foto berhasil dipilih */
-.btn-edit-foto.success-state {
-    background-color: #e8f5e9 !important;
-    border-color: #2c5e38 !important;
-    color: #2c5e38 !important;
-}
-
-.btn-simpan-foto {
-    display: none;
-    /* Awalnya disembunyikan */
-    background-color: #2c5e38;
-    color: white;
-    border: none;
-    padding: 8px 25px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(44, 94, 56, 0.2);
-}
-
-.btn-simpan-foto:hover {
-    background-color: #1f4227;
-}
-
-/* ==========================================================================
-   Klaim Kelulusan Mahasiswa (update_data.php)
-   ========================================================================== */
 
 .claim-box {
     border-left: 4px solid #28a745;
@@ -1821,7 +1187,6 @@ body {
     cursor: pointer;
 }
 
-/* Kotak Informasi Pengajuan Pending */
 .alert-pending {
     padding: 15px;
     background-color: #fff3cd;
@@ -1839,7 +1204,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Kotak Informasi Pengajuan Ditolak */
 .alert-rejected {
     color: #721c24;
     background-color: #f8d7da;
@@ -1864,7 +1228,200 @@ body {
     height: 18px;
 }
 
-/* Ikon Kecil Pengganti Emoji di Dashboard Admin */
+/* =========================================
+   HALAMAN PANEL ADMIN
+========================================= */
+.admin-body {
+    display: flex;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-sidebar {
+    width: 260px;
+    height: 100vh;
+    background-color: #2d5a3b;
+    color: white;
+    padding: 20px;
+    position: fixed;
+}
+
+.admin-sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #ffffff33;
+    padding-bottom: 15px;
+}
+
+.admin-sidebar a {
+    display: block;
+    color: #cbd5e1;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+    background-color: #1e3d28;
+    color: white;
+}
+
+.admin-sidebar a.logout {
+    background-color: #a62626;
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.admin-sidebar a.logout:hover {
+    background-color: #7a1b1b;
+}
+
+.admin-main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 40px;
+}
+
+.admin-header {
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    color: #2d5a3b;
+    margin-bottom: 5px;
+}
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.admin-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #2d5a3b;
+}
+
+.admin-card.warning {
+    border-left-color: #ff9800;
+}
+
+.admin-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.admin-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2d5a3b;
+    margin: 0;
+}
+
+.admin-card.warning p {
+    color: #ff9800;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.admin-table th {
+    background-color: #2d5a3b;
+    color: white;
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.admin-table .no-data {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    font-style: italic;
+}
+
+.admin-inline-form {
+    display: inline;
+}
+
+.admin-input-table {
+    width: 70px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.admin-btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.admin-btn-reject {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 5px;
+}
+
+.admin-btn-file {
+    background-color: #007bff;
+    color: white;
+}
+
+.admin-btn-edit {
+    background-color: #ff9800;
+    color: white;
+}
+
+.admin-btn-delete {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 5px;
+}
+
 .admin-mini-icon {
     width: 14px;
     height: 14px;
@@ -1874,11 +1431,186 @@ body {
     object-fit: contain;
 }
 
-.tombol_edit_Profil {
-    background: #ff9800;
+/* =========================================
+   HALAMAN DETAIL
+========================================= */
+.detail-wrapper {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.detail-foto {
+    flex-shrink: 0 !important;
+    width: 350px !important;
+}
+
+.detail-foto img {
+    width: 100% !important;
+    height: 400px !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+}
+
+.detail-info h2 {
+    margin-top: 0;
+    color: #2c5e38;
+    font-size: 28px;
+}
+
+.detail-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.btn-kembali {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2c5e38;
     color: white;
-    padding: 5px 15px;
-    border-radius: 4px;
     text-decoration: none;
-    font-size: 0.8rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-kembali:hover {
+    background-color: #1f4227;
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    background-color: white;
+    color: #2c5e38;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.page-btn:hover {
+    background-color: #f1f1f1;
+    border-color: #2c5e38;
+}
+
+.page-btn.active {
+    background-color: #2c5e38;
+    color: white;
+    border-color: #2c5e38;
+}
+
+/* =========================================
+   RESPONSIVE (TABLET & MOBILE)
+========================================= */
+@media (max-width: 992px) {
+    .content-middle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .alumni-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .update-layout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modern-form .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .trending-grid,
+    .alumni-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-layout {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+        max-height: none;
+        position: relative;
+        top: 0;
+    }
+
+    .admin-body {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+
+    .admin-main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .detail-wrapper {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .detail-foto {
+        width: 100% !important;
+    }
 }

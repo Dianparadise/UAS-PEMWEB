@@ -8,7 +8,7 @@ $auth = new AuthController($conn);
 
 // 3. Tangkap data dari form public/login.php
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 
 // 4. Suruh Controller menjalankan fungsi login()
 $cek_login = $auth->login($username, $password);

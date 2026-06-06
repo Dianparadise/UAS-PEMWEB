@@ -15,7 +15,7 @@ Sistem ini dibangun menggunakan arsitektur MVC (Model-View-Controller) secara *N
 *   **Bahasa Pemrograman:** PHP 8.x (*Native*), HTML5, CSS3, JavaScript.
 *   **Basis Data:** MariaDB / MySQL.
 *   **Desain Antarmuka:** CSS (dengan sentuhan *framework* CSS/Tailwind CSS).
-*   **Web Server:** Laragon (Apache).
+*   **Web Server:** Laragon / Xampp (Apache).
 *   **Manajemen Database:** HeidiSQL / phpMyAdmin.
 
 ## 📂 Struktur Direktori

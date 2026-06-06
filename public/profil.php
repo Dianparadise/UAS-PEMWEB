@@ -162,7 +162,7 @@ $queryRequest = $data['request'];
                             <p>
                                 <?= htmlspecialchars($data_profil['nama_fakultas'] ?? '- Belum diisi -'); ?>
                             </p>
-                            
+
                         </div>
                         <div class="info-group">
                             <label>Jurusan</label>
@@ -194,7 +194,7 @@ $queryRequest = $data['request'];
                                 <?= $data_profil['perusahaan'] ?? '- Belum diisi -'; ?>
                             </p>
                         </div>
-                        <div class="info-group">
+                        <div class="info-group" style="grid-column: 1/-1;">
                             <label>Bio Singkat</label>
                             <p>
                                 <?= $data_profil['bio'] ?? '- Belum diisi -'; ?>
@@ -280,11 +280,11 @@ $queryRequest = $data['request'];
     </div>
 
     <script>
-       
+
         const menuItems = document.querySelectorAll('.sidebar-menu .menu-item:not(.logout-link)');
         const sections = document.querySelectorAll('.profile-main-content .content-section');
 
-        
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',

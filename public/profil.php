@@ -280,11 +280,11 @@ $queryRequest = $data['request'];
     </div>
 
     <script>
-        // Ambil semua menu kiri dan semua kotak konten (section) di kanan
+       
         const menuItems = document.querySelectorAll('.sidebar-menu .menu-item:not(.logout-link)');
         const sections = document.querySelectorAll('.profile-main-content .content-section');
 
-        // Aturan deteksi: jalankan fungsi ketika 50% (0.5) bagian section terlihat di layar
+        
         const observerOptions = {
             root: null,
             rootMargin: '0px',

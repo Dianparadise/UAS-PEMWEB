@@ -4,17 +4,39 @@ require_once '../../config/koneksi.php';
 
 if (isset($_POST['update_profil'])) {
     $user_id = $_SESSION['user_id'];
+    $email_lama = $_SESSION['email'];
+
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $email_baru = mysqli_real_escape_string($conn, $_POST['email']);
+    $bio = mysqli_real_escape_string($conn, $_POST['bio']);
 
-    $query = "UPDATE users SET nama='$nama', email='$email' WHERE id='$user_id'";
+    $query_users = "UPDATE users SET nama='$nama', email='$email_baru' WHERE id='$user_id'";
+    $update_users = mysqli_query($conn, $query_users);
 
-    if (mysqli_query($conn, $query)) {
-        // Update Session agar nama di header langsung sinkron
-        $_SESSION['nama'] = $nama;
-        header("location: ../../public/profil.php?status=success");
+    $query_profil = "UPDATE alumni_profiles SET bio='$bio' WHERE user_id='$user_id'";
+    $update_profil = mysqli_query($conn, $query_profil);
+
+    // Jika KEDUANYA berhasil di-update
+    if ($update_users && $update_profil) {
+
+        if ($email_lama !== $email_baru) {
+            $_SESSION['email'] = $email_baru;
+        }
+
+        echo "<script>
+                alert('Profil dan Bio Singkat berhasil diperbarui!');
+                window.location='../../public/profil.php';
+              </script>";
+        exit;
     } else {
-        echo "Gagal update: " . mysqli_error($conn);
+        echo "<script>
+                alert('Gagal memperbarui profil: " . mysqli_error($conn) . "');
+                window.location='../../public/edit_profil.php';
+              </script>";
+        exit;
     }
+} else {
+    header("location: ../../public/profil.php");
+    exit;
 }
 ?>

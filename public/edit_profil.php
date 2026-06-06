@@ -7,21 +7,24 @@ if (!isset($_SESSION['status'])) {
     exit;
 }
 
-// Gunakan email yang ada di session untuk mencari data user
 $email_session = $_SESSION['email'];
 
-// Query mengambil data berdasarkan email dari session
-$query = mysqli_query($conn, "SELECT id, nama, email FROM users WHERE email='$email_session'");
-$user = mysqli_fetch_assoc($query);
+// 1. Ambil data nama & email dari tabel users
+$query_user = mysqli_query($conn, "SELECT id, nama, email FROM users WHERE email='$email_session'");
+$user = mysqli_fetch_assoc($query_user);
 
-// Tambahan: Pastikan $user tidak null/kosong
 if (!$user) {
     echo "Data user tidak ditemukan!";
     exit;
 }
 
-// Sekarang $user['id'] akan berisi ID yang benar
-$_SESSION['user_id'] = $user['id'];
+$user_id = $user['id'];
+$_SESSION['user_id'] = $user_id;
+
+// 2. Ambil data bio dari tabel alumni_profiles (Diubah menjadi 'bio' sesuai databasemu)
+$query_profil = mysqli_query($conn, "SELECT bio FROM alumni_profiles WHERE user_id='$user_id'");
+$profil = mysqli_fetch_assoc($query_profil);
+$bio = $profil['bio'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -29,29 +32,42 @@ $_SESSION['user_id'] = $user['id'];
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil - SIJA</title>
+    <!-- Memanggil file style.css -->
     <link rel="stylesheet" href="../asset/css/style.css">
 </head>
 
-<body>
-    <div class="container"
-        style="max-width: 600px; margin: 50px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <h2>Edit Nama & Email</h2>
+<body class="edit-profile-body">
+    <div class="edit-profile-box">
+        <h2>Edit Profil</h2>
+
         <form action="../app/controller/UpdateProfilController.php" method="POST">
-            <div style="margin-bottom: 15px;">
+
+            <div class="edit-form-group">
                 <label>Nama Lengkap</label>
-                <input type="text" name="nama" value="<?= htmlspecialchars($user['nama']) ?>" required
-                    style="width: 100%; padding: 10px;">
+                <input type="text" name="nama" class="edit-form-input" value="<?= htmlspecialchars($user['nama']) ?>"
+                    required>
             </div>
-            <div style="margin-bottom: 15px;">
+
+            <div class="edit-form-group">
                 <label>Email Resmi</label>
-                <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required
-                    style="width: 100%; padding: 10px;">
+                <input type="email" name="email" class="edit-form-input" value="<?= htmlspecialchars($user['email']) ?>"
+                    required>
             </div>
-            <a href="profil.php" style="color: #757575;">Batal</a>
-            <button type="submit" name="update_profil"
-                style="padding: 10px 20px; background: #2e7d32; color: white; border: none; border-radius: 4px; float: right;">Simpan
-                Perubahan</button>
+
+            <!-- Input Textarea untuk Bio Singkat (name diubah jadi 'bio') -->
+            <div class="edit-form-group">
+                <label>Bio Singkat</label>
+                <textarea name="bio" class="edit-form-textarea"
+                    placeholder="Tuliskan sedikit tentang diri Anda..."><?= htmlspecialchars($bio) ?></textarea>
+            </div>
+
+            <div class="edit-form-actions">
+                <a href="profil.php" class="btn-batal">Batal</a>
+                <button type="submit" name="update_profil" class="btn-simpan-profil">Simpan Perubahan</button>
+            </div>
+
         </form>
     </div>
 </body>

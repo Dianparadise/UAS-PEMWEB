@@ -19,7 +19,7 @@
         </div>
 
         <?php
-        // Memasukkan SEMUA kondisi ke dalam pelindung isset() agar tidak error
+      
         if (isset($_GET['pesan'])) {
             if ($_GET['pesan'] == "password_beda") {
                 echo "<p style='color: #dc143c; text-align: center; margin-bottom: 15px; font-weight: bold; background-color: #ffdce0; padding: 10px; border-radius: 5px;'>Password dan Konfirmasi tidak cocok!</p>";

@@ -10,7 +10,6 @@ $password = md5($_POST['password']);
 $konfirmasi_password = md5($_POST['konfirmasi_password']);
 
 // 2. VALIDASI ANGKATAN (WAJIB DIISI!)
-// Jika kosong, langsung tolak dan kembalikan ke halaman register
 if (empty($_POST['angkatan'])) {
     header("location:../../public/register.php?pesan=angkatan_kosong");
     exit;

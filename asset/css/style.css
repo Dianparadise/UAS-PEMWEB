@@ -1614,3 +1614,96 @@ body {
         width: 100% !important;
     }
 }
+
+/* =========================================
+   HALAMAN EDIT PROFIL
+========================================= */
+.edit-profile-body {
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.edit-profile-box {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.edit-profile-box h2 {
+    color: #2d5a3b;
+    margin-bottom: 25px;
+}
+
+.edit-form-group {
+    margin-bottom: 20px;
+}
+
+.edit-form-group label {
+    display: block;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.edit-form-input,
+.edit-form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+}
+
+.edit-form-input:focus,
+.edit-form-textarea:focus {
+    border-color: #2d5a3b;
+}
+
+.edit-form-textarea {
+    resize: vertical;
+    /* User bisa menarik tinggi kotak bio */
+    min-height: 100px;
+}
+
+.edit-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.btn-batal {
+    color: #777;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-batal:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.btn-simpan-profil {
+    padding: 10px 25px;
+    background: #2d5a3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-simpan-profil:hover {
+    background: #1e3d28;
+}

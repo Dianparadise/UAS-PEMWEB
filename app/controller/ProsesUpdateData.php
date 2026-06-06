@@ -47,7 +47,7 @@ if ($error_file === 0) {
         if ($ukuran_file <= 5000000) { // Maks 5MB
             // Buat nama unik agar file tidak tertimpa foto pengguna lain
             $nama_baru = 'bukti_' . $alumni_id . '_' . time() . '.' . $ekstensi;
-            $lokasi_simpan = '../uploads/Bukti/' . $nama_baru;
+            $lokasi_simpan = __DIR__ . '/../../uploads/Bukti/' . $nama_baru;
 
             if (move_uploaded_file($tmp_file, $lokasi_simpan)) {
                 // 5. Masukkan data ke antrean tabel update_requests

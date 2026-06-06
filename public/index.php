@@ -102,7 +102,8 @@ $current_page = $result['current_page'];
                     value="<?= $_GET['search'] ?? ''; ?>">
 
                 <button type="submit">
-                    🔍
+                    <img src="../uploads/Asset/search.png" alt="Cari"
+                        style="width: 18px; height: 18px; object-fit: contain; vertical-align: middle;">
                 </button>
 
             </form>
@@ -242,7 +243,10 @@ $current_page = $result['current_page'];
 
                             <div
                                 style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background-color: #f8f9fa; border-radius: 12px; border: 2px dashed #ddd;">
-                                <h3 style="color: #555; margin-bottom: 10px; font-size: 1.5rem;">🔍 Data Tidak Ditemukan
+                                <h3 style="color: #555; margin-bottom: 10px; font-size: 1.5rem;">
+                                    <img src="../uploads/Asset/search.png" alt="Ikon Cari"
+                                        style="width: 28px; height: 28px; object-fit: contain; vertical-align: middle; margin-right: 8px; margin-top: -4px;">
+                                    Data Tidak Ditemukan
                                 </h3>
                                 <p style="color: #777; margin-bottom: 20px;">Maaf, tidak ada alumni yang sesuai dengan
                                     filter atau pencarian Anda.</p>
